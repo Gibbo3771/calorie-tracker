@@ -26,12 +26,13 @@ class Profile < Model
             first_name, 
             last_name, 
             date_of_birth, 
+            gender,
             height, 
             weight
             ) VALUES (
-                $1, $2, to_date($3, 'YYYYMMDD'), $4, $5
+                $1, $2, to_date($3, 'YYYYMMDD'), $4, $5, $6
             ) RETURNING id"
-        @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @height, @weight]).map {|data| data['id']}).first()
+        @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight]).map {|data| data['id']}).first()
     end
 
     def self.delete_all(table="profiles")
