@@ -33,7 +33,7 @@ namespace :dev do
     desc('Populates the db with dummy data')
     task :dummy_data do
         puts "-- POPULATING DATABASE WITH DUMMY DATA --\n"
-        sh %{psql -d food_tracker -f ./db/john_doe.sql > /dev/null}, verbose: false
+        sh %{psql -d calorie_tracker -f ./db/john_doe.sql > /dev/null}, verbose: false
     end
     desc('Purges the database of all data')
     task :purge do
@@ -44,22 +44,22 @@ end
 
 def drop_database()
     puts "-- Dropping database --\n"
-    sh %{dropdb --if-exists food_tracker > /dev/null}, verbose: false
+    sh %{dropdb --if-exists calorie_tracker > /dev/null}, verbose: false
 end
 
 def create_database()
     puts "-- Creating new database --\n"
-    sh %{createdb food_tracker}, verbose: false
+    sh %{createdb calorie_tracker}, verbose: false
 end
 
 def create_tables()
     puts "-- Creating tables --"
-    sh %{psql -d food_tracker -f ./db/setup.sql > /dev/null}, verbose: false
+    sh %{psql -d calorie_tracker -f ./db/setup.sql > /dev/null}, verbose: false
 end
 
 def purge_database()
     puts "-- Purging database --\n"
-    sh %{psql -d food_tracker -f ./db/purge.sql > /dev/null}, verbose: false
+    sh %{psql -d calorie_tracker -f ./db/purge.sql > /dev/null}, verbose: false
 end
 
 def set_dev_mode(dev_mode)
