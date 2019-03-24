@@ -1,0 +1,7 @@
+<div>
+    Delete profile, THIS IS PERMANENT AND YOU WILL LOSE ALL DATA 
+    <form action="/calories/<%= @profile.id %>/profile/delete" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete">
+    </form>
+<div>

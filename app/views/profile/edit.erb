@@ -1,0 +1,18 @@
+<div>
+
+    Edit profile:
+    <form id="create-form" action="/calories/<%= @profile.id %>/profile" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+        <label for="first-name">First Name</label>
+        <input id="first-name"  name="first_name" type="text" value=<%= @profile.first_name %>>
+        <label for="last-name">Last Name</label>
+        <input id="last-name"  name="last_name" type="text" value=<%= @profile.last_name %>>
+        <label for="date-of-birth">Date of Birth</label>
+        <input id="date-of-birth"  name="date_of_birth" type="date" value=<%= @profile.date_of_birth %>>
+        <label for="height">Height</label>
+        <input id="height"  name="height" type="text" value=<%= @profile.height %>>
+        <label for="weight">Weight</label>
+        <input id="weight"  name="weight" type="text"value=<%= @profile.weight %>>
+        <button form_id="create-form" type="submit" name="button">Update</button>
+    </form>
+<div>
