@@ -1,13 +1,25 @@
 require_relative './model'
 
 class Profile < Model
+    class << self
+
+        def table
+            "profiles"
+        end
+
+        def create_instance(options)
+            return Profile.new(options)
+        end
+
+        def exists?()
+            sql = "SELECT COUNT(*) FROM #{table}"
+            count = SqlRunner.run(sql).map {|data| data['count']}
+            return count.first.to_i == 1
+        end
+    end
 
     attr_reader :id
     attr_accessor :first_name, :last_name, :date_of_birth, :height, :weight
-
-    def initialize(options, table="profiles")
-        super
-    end
 
     protected
 
@@ -19,10 +31,6 @@ class Profile < Model
         @gender = options['gender']
         @height = options['height']
         @weight = options['weight']
-    end
-
-    def self.create_instance(options)
-        return Profile.new(options)
     end
 
     public
@@ -37,14 +45,8 @@ class Profile < Model
         return (SqlRunner.run(sql, [@date_of_birth]).map { |data| data['date_part']}).first()
     end
 
-    def self.exists?()
-        sql = "SELECT COUNT(*) FROM profiles"
-        count = SqlRunner.run(sql).map {|data| data['count']}
-        return count.first.to_i == 1
-    end
-
     def save()
-        sql = "INSERT INTO #{table} (
+        sql = "INSERT INTO #{self.class.table} (
             first_name, 
             last_name, 
             date_of_birth, 
@@ -54,24 +56,13 @@ class Profile < Model
             ) VALUES (
                 $1, $2, to_date($3, 'YYYYMMDD'), $4, $5, $6
             ) RETURNING id"
+        puts "table = #{table}"
         @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight]).map {|data| data['id']}).first()
-    end
-
-    def self.delete_all(table="profiles")
-        super
-    end
-
-    def self.find(id, table="profiles")
-        super
-    end
-
-    def self.all(table="profiles")
-        super
     end
 
     def update(options)
         set_data(options)
-        sql = "UPDATE #{table} SET
+        sql = "UPDATE #{self.class.table} SET
             first_name = $1, 
             last_name = $2, 
             date_of_birth = $3,

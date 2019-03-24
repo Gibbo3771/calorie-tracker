@@ -1,18 +1,42 @@
 require_relative '../../db/sql_runner'
 
 class Model
+    class << self
+
+        def delete_all()
+            sql = "DELETE FROM #{table}"
+            return SqlRunner.run(sql)
+        end
+    
+        def find(id)
+            sql = "SELECT * FROM #{table}
+            WHERE id = $1"
+            return SqlRunner.run(sql, [id]).map { |data| create_instance(data)}.first()
+        end
+    
+        def all()
+            sql = "SELECT * FROM #{table}"
+            return SqlRunner.run(sql).map { |data| self.create_instance(data)}
+        end
+
+        protected
+        
+        def create_instance(options)
+            raise NotImplementedError
+        end
+
+        def table
+            raise NotImplementedError
+        end
+
+    end
 
     attr_reader :id, :table
-    def initialize(options, table="SCHEMA NOT SET")
-        @table = table
+    def initialize(options)
         set_data(options)
     end
 
     protected
-
-    def self.create_instance(options)
-        # stub method
-    end
 
     def set_data(options)
         @id = options['id'] if options['id']
@@ -21,27 +45,10 @@ class Model
     public
 
     def delete()
-        sql = "DELETE FROM #{@table}
+        sql = "DELETE FROM #{self.class.table}
         WHERE id = $1"
         puts sql
         return SqlRunner.run(sql, [@id])
-    end
-
-    def self.delete_all(table="SCHEME NOT SET")
-        sql = "DELETE FROM #{table}"
-        return SqlRunner.run(sql,)
-    end
-
-    def self.find(id, table="SCHEME NOT SET")
-        sql = "SELECT * FROM #{table}
-        WHERE id = $1"
-        return SqlRunner.run(sql, [id]).map { |data| create_instance(data)}.first()
-    end
-
-
-    def self.all(table="SCHEME NOT SET")
-        sql = "SELECT * FROM #{table}"
-        return SqlRunner.run(sql).map { |data| self.create_instance(data)}
     end
 
 end
