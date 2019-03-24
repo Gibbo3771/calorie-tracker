@@ -4,42 +4,45 @@ require 'json'
 
 require 'rake/testtask'
 
-task :default => ["production:setup"]
+task :default => ["db:reset"]
 
-desc('Configures the application to run in production mode')
-namespace :production do
-    desc('Drops and creates the database for the application')
-    task :setup do 
-        drop_database()
-        create_database()
-        create_tables()
+namespace :set do
+    desc('Sets up the application for development')
+    task :dev do
+        set_dev_mode(true)
+    end
+    desc('Sets up the application for production')
+    task :production do
         set_dev_mode(false)
-        puts "-- PRODUCTION ENVIRONMENT SETUP --\n"
-        puts "-- Start server with start_app --\n"
     end
 end
 
-desc('Configures the application to run in developer mode')
-namespace :dev do
-    desc('Creates the db setup for testing')
-    task :setup do
-        puts "\n-- SETTING UP TESTING ENVIRONMENT --"
+namespace :db do
+    desc('Drops the database')
+    task :drop do
+        drop_database()
+    end
+    desc('Seeds the database with testing data')
+    task :seed do
+        seed()
+    end
+    desc('Creates the database and schema')
+    task :load_schema do
+        create_database()
+        create_tables()
+    end
+    desc('Recreate the database and schemas, then seed the database')
+    task :reset do
         drop_database()
         create_database()
         create_tables()
-        set_dev_mode(true)
-        puts "-- TESTING ENVIRONMENT SETUP --\n"
+        seed()
     end
-    desc('Populates the db with dummy data')
-    task :dummy_data do
-        puts "-- POPULATING DATABASE WITH DUMMY DATA --\n"
-        sh %{psql -d calorie_tracker -f ./db/john_doe.sql > /dev/null}, verbose: false
-    end
-    desc('Purges the database of all data')
-    task :purge do
-        purge_database()
-        create_tables()
-    end
+end
+
+def seed()
+    puts "-- Seeding database --\n"
+    sh %{psql -d calorie_tracker -f ./db/john_doe.sql > /dev/null}, verbose: false
 end
 
 def drop_database()
