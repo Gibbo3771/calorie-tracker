@@ -1,7 +1,7 @@
 <div>
 
     Edit profile:
-    <form id="create-form" action="/calories/<%= @profile.id %>/profile" method="post">
+    <form id="create-form" action="/profile/<%= @profile.id %>" method="post">
         <input type="hidden" name="_method" value="PATCH">
         <label for="first-name">First Name</label>
         <input id="first-name"  name="first_name" type="text" value=<%= @profile.first_name %>>

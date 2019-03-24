@@ -1,8 +1,8 @@
 <div>
     Hello <%= @profile.first_name %>
-    <a href="/calories/<%= @profile.id %>/profile/edit">Edit Profile</a>
+    <a href="/profile/<%= @profile.id %>/edit">Edit Profile</a>
     Delete profile, THIS IS PERMANENT AND YOU WILL LOSE ALL DATA 
-    <form action="/calories/<%= @profile.id %>/profile" method="post">
+    <form action="/profile/<%= @profile.id %>" method="post">
         <input id="hidden" type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete">
     </form>

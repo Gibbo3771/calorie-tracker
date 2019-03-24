@@ -8,11 +8,14 @@ set :environment, settings['dev'] ? :development : :production
 set :method_override, true
 
 get('') do
-    redirect('/calories/1/home')
+    redirect('/calories/welcome')
 end
 
-get('/') do
-    redirect('/calories/1/home')
+get('/calories/welcome') do
+    if Profile.exists?()
+        redirect('calories/1/home')
+    end
+    erb(:welcome)
 end
 
 get('/calories/:id/home') do
@@ -23,38 +26,6 @@ get('/calories/:id/home') do
     erb(:"home/view")
 end
 
-get('/calories/welcome') do
-    erb(:welcome)
-end
 
-get('/calories/profile/create') do
-    erb(:"profile/create")
-end
 
-get('/calories/:id/profile') do
-    @profile = Profile.find(params[:id])
-    erb(:"profile/view")
-end
-
-get('/calories/:id/profile/edit') do
-    @profile = Profile.find(params[:id])
-    erb(:"profile/edit")
-end
-
-post('/calories/profile') do
-    profile = Profile.new(params)
-    profile.save()
-    redirect("/calories/#{profile.id}/profile")
-end
-
-delete('/calories/:id/profile') do
-    Profile.new(params).delete()
-    redirect('')
-end
-
-patch('/calories/:id/profile') do
-    Profile.find(params[:id]).update(params)
-    puts "patch!"
-    redirect("/calories/#{params[:id]}/profile")
-end
 
