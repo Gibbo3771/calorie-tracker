@@ -8,7 +8,7 @@ class CalorieConsumption < Model
     end
 
     protected
-
+``
     def set_data(options)
         super
         @profile_id = options['profile_id']
