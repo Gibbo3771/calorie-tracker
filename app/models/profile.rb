@@ -12,7 +12,7 @@ class Profile < Model
     public
 
     def calculate_bmr()
-        
+        return (10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * @age.to_i) + (@gender == "male" ? 5 : -161)
     end
 
     def self.exists?()
@@ -51,11 +51,12 @@ class Profile < Model
         sql = "UPDATE #{table} SET
             first_name = $1, 
             last_name = $2, 
-            date_of_birth = $3, 
-            height = $4, 
-            weight = $5
-            WHERE id = $6"
-        @id = SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @height, @weight, @id])    
+            date_of_birth = $3,
+            gender = $4, 
+            height = $5, 
+            weight = $6
+            WHERE id = $7"
+        @id = SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @id])    
     end
 
     protected
@@ -65,6 +66,7 @@ class Profile < Model
         @first_name = options['first_name']
         @last_name = options['last_name']
         @date_of_birth = options['date_of_birth']
+        @gender = options['gender']
         @height = options['height']
         @weight = options['weight']
     end
