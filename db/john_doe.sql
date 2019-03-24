@@ -15,3 +15,11 @@ weight
     '188',
     '111'
 );
+
+DECLARE @i int = 0
+
+WHILE @x < 50
+BEGIN
+    SET @x = @x + 1
+    
+END

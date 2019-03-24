@@ -9,10 +9,32 @@ class Profile < Model
         super
     end
 
+    protected
+
+    def set_data(options)
+        super
+        @first_name = options['first_name']
+        @last_name = options['last_name']
+        @date_of_birth = options['date_of_birth']
+        @gender = options['gender']
+        @height = options['height']
+        @weight = options['weight']
+    end
+
+    def self.create_instance(options)
+        return Profile.new(options)
+    end
+
     public
 
     def calculate_bmr()
-        return (10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * @age.to_i) + (@gender == "male" ? 5 : -161)
+        return ((10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * calculate_age().to_i) + (@gender == "male" ? 5 : -161)).to_i
+    end
+
+    def calculate_age()
+        sql = "SELECT EXTRACT(YEAR FROM age(cast($1 as date)))"
+        puts @date_of_birth
+        return (SqlRunner.run(sql, [@date_of_birth]).map { |data| data['date_part']}).first()
     end
 
     def self.exists?()
@@ -58,22 +80,6 @@ class Profile < Model
             weight = $6
             WHERE id = $7"
         @id = SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @id])    
-    end
-
-    protected
-
-    def set_data(options)
-        super
-        @first_name = options['first_name']
-        @last_name = options['last_name']
-        @date_of_birth = options['date_of_birth']
-        @gender = options['gender']
-        @height = options['height']
-        @weight = options['weight']
-    end
-
-    def self.create_instance(options)
-        return Profile.new(options)
     end
 
 end
