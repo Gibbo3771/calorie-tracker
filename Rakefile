@@ -4,38 +4,36 @@ require 'json'
 
 require 'rake/testtask'
 
-task :default => ["db:reset"]
-
-namespace :set do
-    desc('Sets up the application for development')
-    task :dev do
-        set_dev_mode(true)
-    end
-    desc('Sets up the application for production')
-    task :production do
-        set_dev_mode(false)
-    end
-end
+task :default => ["db:dev"]
 
 namespace :db do
     desc('Drops the database')
     task :drop do
         drop_database()
     end
-    desc('Seeds the database with testing data')
+    desc('Seeds the database with data for testing/development')
     task :seed do
         seed()
+    end
+    desc('Purges the database of all data while keeping the schemas intact')
+    task :purge do
+        purge_database()
+    end
+    desc('Reseeds the database with the data for testing/development')
+    task :reseed => [:purge, :seed] do
     end
     desc('Creates the database and schema')
     task :load_schema do
         create_database()
         create_tables()
     end
-    desc('Recreate the database and schemas, then seed the database')
-    task :reset do
-        drop_database()
-        create_database()
-        create_tables()
+    desc('Sets the database up for development')
+    task :dev => [:drop, :load_schema, :seed] do
+        set_dev_mode(true)
+    end
+    desc('Sets the database up for production')
+    task :production => [:drop, :load_schema] do
+        set_dev_mode(false)
     end
 end
 
