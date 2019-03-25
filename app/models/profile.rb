@@ -36,6 +36,7 @@ class Profile < Model
         @gender = options['gender']
         @height = options['height']
         @weight = options['weight']
+        @physical_activity_level_id = options['physical_activity_level_id']
     end
 
     public
@@ -57,12 +58,13 @@ class Profile < Model
             date_of_birth, 
             gender,
             height, 
-            weight
+            weight,
+            physical_activity_level_id
             ) VALUES (
-                $1, $2, to_date($3, 'YYYYMMDD'), $4, $5, $6
+                $1, $2, to_date($3, 'YYYYMMDD'), $4, $5, $6, $7
             ) RETURNING id"
         puts "table = #{table}"
-        @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight]).map {|data| data['id']}).first()
+        @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @physical_activity_level_id]).map {|data| data['id']}).first()
     end
 
     def update(options)
@@ -73,9 +75,10 @@ class Profile < Model
             date_of_birth = $3,
             gender = $4, 
             height = $5, 
-            weight = $6
-            WHERE id = $7"
-        @id = SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @id])    
+            weight = $6,
+            physical_activity_level_id = $7
+            WHERE id = $8"
+        @id = SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @physical_activity_level_id, @id])    
     end
 
 end

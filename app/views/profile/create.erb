@@ -10,6 +10,13 @@
         <input id="height"  name="height" type="text"/>
         <label for="weight">Weight</label>
         <input id="weight"  name="weight" type="text"/>
+        <select id="physical-activity-level"  name="physical_activity_level" type="text">
+            <% for pal in @physical_activity_levels do %>
+            <option id="physical-activity-level" name="physical_activity_level" value=<%= pal.id %>>
+            <%= pal.to_s %>
+            </option>
+            <% end %>
+        </select>
         <button form_id="create-form" type="submit" name="button">Create</button>
     </form>
 <div>
