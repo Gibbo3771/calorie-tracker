@@ -3,9 +3,11 @@ require_relative './application_controller'
 
 class WelcomeController < ApplicationController
     
+    # Needs cleaned up, perhaps write a profile helper
     get('') do
         if Profile.exists?()
-            redirect('profile/1')
+            profile = Profile.find_first()
+            redirect("profile/#{profile.id}")
         end
         erb(:welcome)
     end

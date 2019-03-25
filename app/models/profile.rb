@@ -11,6 +11,11 @@ class Profile < Model
             return Profile.new(options)
         end
 
+        def find_first()
+            sql = "SELECT * FROM #{table}"
+            return (SqlRunner.run(sql).map {|data| Profile.new(data)}).first()
+        end
+
         def exists?()
             sql = "SELECT COUNT(*) FROM #{table}"
             count = SqlRunner.run(sql).map {|data| data['count']}
