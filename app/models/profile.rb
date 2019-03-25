@@ -1,3 +1,4 @@
+require 'date'
 require_relative './model'
 
 class Profile < Model
@@ -45,9 +46,19 @@ class Profile < Model
         return ((10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * calculate_age().to_i) + (@gender == "male" ? 5 : -161)).to_i
     end
 
+    def physical_activity_level()
+        sql = "SELECT * FROM physical_activity_levels
+        WHERE id = $1"
+        return (SqlRunner.run(sql, [@physical_activity_level_id]).map {|data| PhysicalActivityLevel.new(data)}).first()
+    end
+
+    def calories_consumed_today()
+        sql = "SELECT calories.calories FROM calorie_intakes
+        WHERE id = $1 AND DATEDIFF(day, #{Date.today}, calories.datestamp) = 0"
+    end
+
     def calculate_age()
         sql = "SELECT EXTRACT(YEAR FROM age(cast($1 as date)))"
-        puts @date_of_birth
         return (SqlRunner.run(sql, [@date_of_birth]).map { |data| data['date_part']}).first()
     end
 

@@ -15,9 +15,10 @@ class PhysicalActivityLevel < Model
     attr_accessor :physical_activity_level, :descriptor, :bmr_multiplier
 
     def set_data(options)
+        super
         @physical_activity_level = options['physical_activity_level']
         @descriptor = options['descriptor']
-        @bmr_multiplier = options['bmr_multiplier']
+        @bmr_multiplier = options['bmr_multiplier'].to_f
     end
 
     def to_s

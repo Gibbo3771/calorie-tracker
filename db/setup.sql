@@ -23,6 +23,13 @@ CREATE TABLE profiles (
     physical_activity_level_id INT REFERENCES physical_activity_levels(id)
 );
 
+CREATE TABLE calorie_intakes (
+    id SERIAL4 PRIMARY KEY,
+    profile_id INT REFERENCES profiles(id),
+    calories INT,
+    datestamp DATE
+);
+
 INSERT INTO physical_activity_levels (
     physical_activity_level,
     descriptor,

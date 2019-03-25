@@ -1,10 +1,16 @@
 require_relative './model'
 
-class CalorieConsumption < Model
+class CalorieIntake < Model
+    class << self
 
-    attr_accessor :profile_id, :calories, :datestamp
-    def initialize(options, table="calories_consumed")
-        super
+        def table
+            "calorie_intakes"
+        end
+
+        def create_instance(options)
+            return Profile.new(options)
+        end
+        
     end
 
     protected

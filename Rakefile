@@ -36,7 +36,6 @@ namespace :db do
         drop_database()
         create_database()
         create_tables()
-        seed()
     end
 end
 

@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
 
     get('/create') do
         @physical_activity_levels = PhysicalActivityLevel.all()
-        puts @physical_activity_levels
         erb(:"profile/create")
     end
     
