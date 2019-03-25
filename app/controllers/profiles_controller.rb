@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
     
     get('/:id/edit') do
         @profile = Profile.find(params[:id])
+        @physical_activity_levels = PhysicalActivityLevel.all()
         erb(:"profile/edit")
     end
     
@@ -31,6 +32,7 @@ class ProfilesController < ApplicationController
     end
     
     patch('/:id') do
+        puts params
         Profile.find(params[:id]).update(params)
         redirect("/profile/#{params[:id]}")
     end

@@ -12,9 +12,9 @@ class WelcomeController < ApplicationController
         erb(:welcome)
     end
     
-    get('/home/:id') do
+    get('/calories/:id') do
         @profile = Profile.find(params['id'])
-        erb(:"home/view")
+        erb(:"calorie_intakes/view")
     end
 
 end

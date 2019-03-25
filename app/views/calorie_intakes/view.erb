@@ -1,0 +1,19 @@
+<div>
+    Hello <%= @profile.first_name %>
+    Your Base Metabolic Rate (BMR) is <%= (@profile.calculate_bmr).to_i %><br>
+    You munch dis much =>
+    <%= @profile.calories_consumed_today() %>/<%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %>
+    <br>
+    You can munch this much more => <%= @profile.remaining_calories() %>
+    <form id="add-form" action="/calories" method="post">
+        <label for="calories">Enter Calories</label>
+        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
+        <input id="calories"  name="calories" type="number"/>
+    </form>
+    <form action="/calories" method="post">
+        <input id="id"  name="id" type="hidden" value="<%= @profile.id %>"/>
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Undo">
+    </form>
+    
+<div>

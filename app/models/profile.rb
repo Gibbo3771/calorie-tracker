@@ -24,7 +24,7 @@ class Profile < Model
         end
     end
 
-    attr_reader :id
+    attr_reader :id, :physical_activity_level_id
     attr_accessor :first_name, :last_name, :date_of_birth, :height, :weight
 
     protected
@@ -58,7 +58,11 @@ class Profile < Model
         calorie_intakes.profile_id = $1 
         AND 
         date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
-        return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first()
+        return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first().to_i
+    end
+
+    def remaining_calories()
+        return ((calculate_bmr() * physical_activity_level().bmr_multiplier) - calories_consumed_today()).to_i
     end
 
     def calculate_age()
@@ -78,7 +82,6 @@ class Profile < Model
             ) VALUES (
                 $1, $2, to_date($3, 'YYYYMMDD'), $4, $5, $6, $7
             ) RETURNING id"
-        puts "table = #{table}"
         @id = (SqlRunner.run(sql, [@first_name, @last_name, @date_of_birth, @gender, @height, @weight, @physical_activity_level_id]).map {|data| data['id']}).first()
     end
 

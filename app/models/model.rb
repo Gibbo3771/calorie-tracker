@@ -42,12 +42,15 @@ class Model
         @id = options['id'] if options['id']
     end
 
+    def save()
+        raise NotImplementedError
+    end
+
     public
 
     def delete()
         sql = "DELETE FROM #{self.class.table}
         WHERE id = $1"
-        puts sql
         return SqlRunner.run(sql, [@id])
     end
 

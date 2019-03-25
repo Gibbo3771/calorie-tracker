@@ -1,6 +1,0 @@
-<div>
-    Hello <%= @profile.first_name %>
-    Your Base Metabolic Rate (BMR) is <%= (@profile.calculate_bmr).to_i %><br>
-    You can munch dis much =>
-    <%= @profile.calories_consumed_today() %>/<%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %>
-<div>
