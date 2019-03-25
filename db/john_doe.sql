@@ -6,14 +6,16 @@ last_name,
 date_of_birth,
 gender, 
 height, 
-weight
+weight,
+physical_activity_level_id
 ) VALUES (
     'John',
     'Doe',
     to_date('1947-07-30', 'YYYYMMDD'),
     'Male',
     '188',
-    '111'
+    '111',
+    4
 );
 
 INSERT INTO calorie_intakes (
@@ -21,7 +23,7 @@ INSERT INTO calorie_intakes (
     calories,
     datestamp
 ) VALUES
-( 1, 200, to_date('2019-03-25', 'YYYYMMDD')),
-( 1, 300, to_date('2019-03-25', 'YYYYMMDD')),
-( 1, 500, to_date('2019-03-25', 'YYYYMMDD')),
-( 1, 500, to_date('2019-03-25', 'YYYYMMDD'));
+( 1, 200, CURRENT_DATE),
+( 1, 300, CURRENT_DATE),
+( 1, 500, CURRENT_DATE),
+( 1, 500, CURRENT_DATE);

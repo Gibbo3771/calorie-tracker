@@ -15,6 +15,7 @@ class CalorieIntake < Model
 
     protected
     
+    attr_accessor :profile_id, :calories, :datestamp
     def set_data(options)
         super
         @profile_id = options['profile_id']

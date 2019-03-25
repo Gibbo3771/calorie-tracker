@@ -53,8 +53,12 @@ class Profile < Model
     end
 
     def calories_consumed_today()
-        sql = "SELECT calories.calories FROM calorie_intakes
-        WHERE id = $1 AND DATEDIFF(day, #{Date.today}, calories.datestamp) = 0"
+        sql = "SELECT SUM(calorie_intakes.calories) AS total FROM calorie_intakes
+        WHERE 
+        calorie_intakes.profile_id = $1 
+        AND 
+        date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
+        return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first()
     end
 
     def calculate_age()
