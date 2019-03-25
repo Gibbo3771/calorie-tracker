@@ -1,7 +1,16 @@
 require_relative './application_controller'
 require_relative '../models/calorie_intake'
+require_relative '../models/profile'
 
 class CalorieIntakesController < ApplicationController
+
+    get('/') do
+        if Profile.exists?()
+            profile = Profile.find_first()
+            redirect("calories/#{profile.id}")
+        end
+        redirect("/profile/create")
+    end
 
     get('/:id') do
         @profile = Profile.find(params['id'])

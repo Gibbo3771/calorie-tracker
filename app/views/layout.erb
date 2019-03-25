@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+        <link href="/style.css" rel="stylesheet" type="text/css" />
         <title>Calories Tracker</title>
     </head>
+    <nav>
+    <ul>
+        <li><a href="/calories">Your Calories</a></li>
+        <li><a href="/profile">Profile</a></li>
+    </ul>
+    </nav>
     <body>
     <%= yield %>
     </body>

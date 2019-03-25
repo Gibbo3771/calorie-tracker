@@ -25,7 +25,7 @@ CREATE TABLE profiles (
 
 CREATE TABLE calorie_intakes (
     id SERIAL4 PRIMARY KEY,
-    profile_id INT REFERENCES profiles(id),
+    profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
     calories INT,
     datestamp DATE
 );

@@ -4,6 +4,14 @@ require_relative './application_controller'
 
 class ProfilesController < ApplicationController
 
+    get('/') do
+        if Profile.exists?()
+            profile = Profile.find_first()
+            redirect("/profile/#{profile.id}")
+        end
+        redirect("/profile/create")
+    end
+
     get('/create') do
         @physical_activity_levels = PhysicalActivityLevel.all()
         erb(:"profile/create")
@@ -23,12 +31,12 @@ class ProfilesController < ApplicationController
     post('/') do
         profile = Profile.new(params)
         profile.save()
-        redirect("/home/#{profile.id}")
+        redirect("/calories/#{profile.id}")
     end
     
     delete('/:id') do
         Profile.new(params).delete()
-        redirect('/welcome')
+        redirect('/')
     end
     
     patch('/:id') do

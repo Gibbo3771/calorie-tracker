@@ -8,4 +8,16 @@ class ApplicationController < Sinatra::Base
     set :environment, settings['dev'] ? :development : :production
     set :method_override, true
 
+    set :profile_id, "-1"
+
+    @@profile_id = 5
+
+    def logged_in?()
+        return !@@profile_id.nil?
+    end
+
+    get('/') do
+        redirect('/calories')
+    end
+
 end
