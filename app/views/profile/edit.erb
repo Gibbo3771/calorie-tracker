@@ -33,12 +33,12 @@
                 <% end %>
             </select>
         </section>
-        <button class="button-normal border-radius-12px" form_id="create-form" type="submit" name="button">Update</button>
+        <button class="button-normal border-radius-12px button-vibrate" form_id="create-form" type="submit" name="button">Update</button>
     </form>
     <form action="/profile/<%= @profile.id %>" method="post">
         <section tooltip="THIS IS PERMANENT" tooltip-position="top">
             <input id="hidden" type="hidden" name="_method" value="DELETE">
-            <button class="button-danger border-radius-12px type="submit">Delete</button>
+            <button class="button-danger border-radius-12px button-vibrate" type="submit">Delete</button>
         </section>
     </form>
 <div>

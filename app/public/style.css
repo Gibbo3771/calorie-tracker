@@ -143,6 +143,7 @@ h1, h2, h3 {
   position: sticky;
   align-items: center;
   justify-content: center;
+  box-shadow: 2px 0 4px 2px black;
 }
 
 .navbar li {
@@ -283,10 +284,6 @@ h1, h2, h3 {
   margin: 0.5em 0px;
 }
 
-.profile-info > form > button:hover {
-    animation: vibrate 200ms linear alternate;
-  }
-
 ::-webkit-datetime-edit { 
     text-align: center;
 }
@@ -309,6 +306,10 @@ h1, h2, h3 {
     font-size: 3em;
     padding: 10px;
     margin: 0;
+}
+
+.greet-user:hover {
+    animation: wobble 600ms linear;
 }
 
 .calorie-display {
@@ -351,6 +352,8 @@ h1, h2, h3 {
 label[for="calories"] {
     display: none;
 }
+
+
 
 /* Nom view end */
 
@@ -399,6 +402,12 @@ label[for="calories"] {
 .button-danger:hover {
   background-color: rgb(223, 1, 1);
   transition: background-color 100ms ease-in-out;
+}
+
+.button-vibrate:hover {
+    animation-name: vibrate;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
 }
 
 /* Buttons end */
@@ -492,7 +501,41 @@ label[for="calories"] {
 /* Font sizes end */
 
 /* Animations start */
+
+.anim-wobble {
+    animation-name: vibrate;
+    animation-timing-function: linear
+}
+
+.anim-bounce-in {
+    animation: bounce-in ease-in-out;
+}
+
 /* Animations end */
+
+/* Animation parameters start */
+
+/* Durations start */
+
+.anim-duration-500 {
+    animation-duration: 500ms;
+}
+
+.anim-duration-600 {
+    animation-duration: 600ms;
+}
+
+.anim-duration-700 {
+    animation-duration: 700ms;
+}
+
+.anim-duration-800 {
+    animation-duration: 800ms;
+}
+
+/* Durations end */
+
+/* Animation parameters end */
 
 /* Animation keyframes */
 
@@ -565,11 +608,19 @@ label[for="calories"] {
 }
 
 @keyframes vibrate {
-  50% {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  33% {
     transform: translateX(3px) rotate(2deg);
+
+  }
+  66% {
+    transform: translateX(-3px) rotate(-2deg);
+
   }
   100% {
-    transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(0px) rotate(0deg);
   }
 }
 
