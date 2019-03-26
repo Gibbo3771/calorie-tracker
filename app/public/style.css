@@ -42,8 +42,15 @@ input {
   border: 0px;
   font-size: 2rem;
   text-align: center;
-  min-width: 300px;
-  min-height: 40px;
+  min-width: 200px;
+  max-width: 500px;
+  min-height: 50px;
+}
+
+button {
+  min-width: 200px;
+  max-width: 500px;
+  min-height: 50px;
 }
 
 .container {
@@ -383,32 +390,10 @@ input {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  width: 100%;
-  /* justify-content: space-around; */
-  /* border: 1px solid red; */
-}
-
-.add-calories form {
-  display: flex;
-  flex-grow: 1;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* border: 1px solid red; */
-}
-
-.add-calories form > * {
-  width: 100%;
-  /* border: 1px solid red; */
 }
 
 .nom-button {
-  width: auto;
   margin-top: 10px;
-  min-height: 50px;
-  min-width: 300px;
-  /* max-width: 600px; */
 }
 
 label[for="calories"] {
