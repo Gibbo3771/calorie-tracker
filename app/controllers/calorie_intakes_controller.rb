@@ -4,7 +4,7 @@ require_relative '../models/profile'
 
 class CalorieIntakesController < ApplicationController
 
-    get('/') do
+    get('/welcome') do
         if Profile.exists?()
             profile = Profile.find_first()
             redirect("calories/#{profile.id}")

@@ -1,14 +1,14 @@
-<div>
+<div class="create-profile">
     <form id="create-form" action="/profile" method="post">
         <label for="first-name">First Name</label>
         <input id="first-name"  name="first_name" type="text"/>
         <label for="last-name">Last Name</label>
         <input id="last-name"  name="last_name" type="text"/>
-        <label for="date-of-birth">Date of Birth</label>
+        <label for="date-of-birth">Date of Birth *</label>
         <input id="date-of-birth"  name="date_of_birth" type="date"/>
-        <label for="height">Height</label>
+        <label for="height">Height (cm) *</label>
         <input id="height"  name="height" type="text"/>
-        <label for="weight">Weight</label>
+        <label for="weight">Weight (kg) *</label>
         <input id="weight"  name="weight" type="text"/>
         <select id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
             <% for pal in @physical_activity_levels do %>
@@ -17,6 +17,6 @@
                 </option>
             <% end %>
         </select>
-        <button form_id="create-form" type="submit" name="button">Create</button>
+        <button class="button-normal border-radius-12px" form_id="create-form" type="submit" name="button">Create</button>
     </form>
 <div>

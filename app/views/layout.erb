@@ -4,13 +4,15 @@
         <link href="/style.css" rel="stylesheet" type="text/css" />
         <title>Calories Tracker</title>
     </head>
-    <nav>
-    <ul>
-        <li><a href="/calories">Your Calories</a></li>
-        <li><a href="/profile">Profile</a></li>
-    </ul>
-    </nav>
     <body>
-    <%= yield %>
+    <% if !request.fullpath.match?(/welcome|create/) %>
+        <ul class="navbar">
+            <li><a href="/calories">Your Calories</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+    <% end %>    
+        <div class="container <%= "margin-top-100px" if !request.fullpath.match?(/welcome|create/) %>">
+            <%= yield %>
+        <div>
     </body>
 </html>

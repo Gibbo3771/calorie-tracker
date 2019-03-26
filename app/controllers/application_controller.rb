@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get('/') do
-        redirect('/calories')
+        redirect('/calories/welcome')
     end
 
 end

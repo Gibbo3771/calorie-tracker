@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
             profile = Profile.find_first()
             redirect("/profile/#{profile.id}")
         end
-        erb(:welcome)
+        redirect("/calories/welcome")
     end
 
     get('/create') do
