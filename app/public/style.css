@@ -36,7 +36,7 @@ h3 {
 
 input {
   /* margin: 10px 0px; */
-  background-color: rgb(150, 118, 187);
+  background-color: #41517c;
   color: #dbdbdb;
   border-radius: 10px;
   border: 0px;
@@ -45,6 +45,20 @@ input {
   min-width: 200px;
   max-width: 500px;
   min-height: 50px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 5px;
+  text-overflow: ellipsis;
+  color: #dbdbdb;
+  border-radius: 10px;
+  border: 0px;
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 50%;
+  background-color: #41517c;
+  outline: none;
+  margin: 0.5em 0px;
 }
 
 button {
@@ -74,14 +88,17 @@ button {
   text-align: center;
   background-color: #292929;
   padding: 20px 0 20px 0;
-  animation: pulse 700ms ease-in-out infinite alternate;
 }
 
-.banner > h1 {
+.banner div > h1 {
   font-family: "Baloo Chettan";
   font-size: 5em;
   color: #ffde99;
   transform: rotateZ(3deg);
+}
+
+.banner-pulser {
+  animation: pulse 700ms ease-in-out infinite alternate;
 }
 
 /* Banner end */
@@ -276,7 +293,7 @@ button {
 }
 
 .profile-info h1 {
-  font-size: 2em;
+  font-size: 2rem;
   padding: 20px;
   animation: bounce-in 600ms ease-in-out;
 }
@@ -294,25 +311,6 @@ button {
   min-height: 40px;
   min-width: 300px;
   max-width: 400px;
-}
-
-.profile-info > form > section > label,
-.profile-info > form > label {
-  min-height: 1em;
-}
-
-.profile-info > form > section > select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 5px;
-  text-overflow: ellipsis;
-  color: #dbdbdb;
-  border-radius: 10px;
-  border: 0px;
-  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 50%;
-  background-color: rgb(150, 118, 187);
-  outline: none;
-  margin: 0.5em 0px;
 }
 
 .profile-info > form > button {
