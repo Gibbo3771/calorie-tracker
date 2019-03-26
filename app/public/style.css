@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan");
+
 body,
 html {
   margin: 0;
@@ -42,6 +44,25 @@ h3 {
 }
 
 /* Webkit end */
+
+/* Banner start */
+
+.banner {
+  width: 100%;
+  text-align: center;
+  background-color: #292929;
+  padding: 20px 0 20px 0;
+  animation: pulse 700ms ease-in-out infinite alternate;
+}
+
+.banner > h1 {
+  font-family: "Baloo Chettan";
+  font-size: 5em;
+  color: #ffde99;
+  transform: rotateZ(3deg);
+}
+
+/* Banner end */
 
 /* Tooltips start */
 
@@ -89,7 +110,7 @@ h3 {
   left: 50%;
   top: -6px;
   transform: translateX(-50%) translateY(-100%);
-  background: #e9fa76;
+  background: #ffde99;
   text-align: center;
   color: #000000;
   padding: 4px 2px;
@@ -143,9 +164,11 @@ h3 {
   width: 100%;
   overflow: hidden;
   position: sticky;
+  position: -webkit-sticky;
+  top: -1px;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 0 4px 2px black;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.514);
 }
 
 .navbar li {

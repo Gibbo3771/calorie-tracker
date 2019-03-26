@@ -5,12 +5,17 @@
         <title>Calories Tracker</title>
     </head>
     <body>
+    <div class="banner">
+        <h1>Nom Nom Nom!</h1>
+    </div>
     <% if !request.fullpath.match?(/welcome|create/) %>
         <ul class="navbar">
-            <li><a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Nom Nom Nom</a></li>
+            <li><a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a></li>
             <li><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile">Profile</a></li>
         </ul>
     <% end %>    
-        <%= yield %>
+        <div class="container">
+            <%= yield %>
+        </div>
     </body>
 </html>
