@@ -10,6 +10,7 @@
         <input id="height"  name="height" type="text"/>
         <label for="weight">Weight (kg) *</label>
         <input id="weight"  name="weight" type="text"/>
+        <label for="physical-activity-level-id">Activity Level *</label>
         <select id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
             <% for pal in @physical_activity_levels do %>
                 <option id="physical-activity-level-id" name="physical_activity_level_id" value="<%= pal.id %>">
