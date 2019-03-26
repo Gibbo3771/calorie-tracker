@@ -1,19 +1,16 @@
-<div>
-    Hello <%= @profile.first_name %>
-    Your Base Metabolic Rate (BMR) is <%= (@profile.calculate_bmr).to_i %><br>
-    You munch dis much =>
-    <%= @profile.calories_consumed_today() %>/<%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %>
-    <br>
-    You can munch this much more => <%= @profile.remaining_calories() %>
-    <form id="add-form" action="/calories" method="post">
-        <label for="calories">Enter Calories</label>
-        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
-        <input id="calories"  name="calories" type="number"/>
-    </form>
-    <form action="/calories" method="post">
-        <input id="id"  name="id" type="hidden" value="<%= @profile.id %>"/>
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Undo">
-    </form>
-    
+<div class="noms-container">
+    <h1 class="greet-user">Hello, <%= @profile.first_name %></h1>
+    <div class="calorie-display">
+        <h1><span tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span> / <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span></h1>
+        <p>Remaining</p>
+        <p tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
+    </div>
+    <div class="add-calories">
+        <form id="calories-form" action="/calories" method="post"  tooltip="Add your calories" tooltip-position="right">
+            <label visible="false" for="calories">Enter Calories</label>
+            <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
+            <input id="calories"  name="calories" type="number" >
+        </form>
+        <button class="button-normal border-radius-12px font-size-14" form="calories-form" type="submit" name="button">Nom</button>
+    </div>
 <div>

@@ -1,13 +1,11 @@
-html,
-body {
+
+
+body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-}
-
-body {
   background-color: #252525;
   color: #dbdbdb;
 }
@@ -23,9 +21,15 @@ p {
   margin: 0;
 }
 
+h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
 .container {
     width: 100%;
-    height: 100%;
+    height: 85%;
+    margin: 10px 0 10px 0;
 }
 
 /* Webkit start */
@@ -40,22 +44,92 @@ p {
 
 /* Tooltips start */
 
-[tooltip]::before {            
-    position: fixed;
-    content: attr(tooltip);
-    opacity: 0;
-    padding: 5px;
-    border-radius: 8px;
-}
-
-[tooltip]:hover::before {        
-    opacity: 1;
-    margin-top: -45px;
-    margin-left: 100px;
-    background-color: #3a7d64;
-    transition: all 200ms ease;
-    box-shadow: 2px 2px 1px 1p rgba(0, 0, 0, 0.5);
-}
+[tooltip]{
+    position:relative;
+    display:inline-block;
+  }
+  [tooltip]::before {
+      content: "";
+      position: absolute;
+      top:-6px;
+      left:50%;
+      transform: translateX(-50%);
+      border-width: 4px 6px 0 6px;
+      border-style: solid;
+      border-color: #E9FA76 transparent transparent     transparent;
+      z-index: 99;
+      opacity:0;
+  }
+  
+  [tooltip-position='left']::before{
+    left:0%;
+    top:50%;
+    margin-left:-12px;
+    transform:translatey(-50%) rotate(-90deg) 
+  }
+  [tooltip-position='top']::before{
+    left:50%;
+  }
+  [tooltip-position='buttom']::before{
+    top:100%;
+    margin-top:8px;
+    transform: translateX(-50%) translatey(-100%) rotate(-180deg)
+  }
+  [tooltip-position='right']::before{
+    left:100%;
+    top:50%;
+    margin-left:1px;
+    transform:translatey(-50%) rotate(90deg)
+  }
+  
+  [tooltip]::after {
+      content: attr(tooltip);
+      position: absolute;
+      left:50%;
+      top:-6px;
+      transform: translateX(-50%)   translateY(-100%);
+      background: #E9FA76;
+      text-align: center;
+      color: #000000;
+      padding:4px 2px;
+      font-size: 16px;
+      min-width: 100px;  
+      border-radius: 5px;
+      pointer-events: none;
+      padding: 4px 4px;
+      z-index:99;
+      opacity:0;
+  }
+  
+  [tooltip-position='left']::after{
+    left:0%;
+    top:50%;
+    margin-left:-8px;
+    transform: translateX(-100%)   translateY(-50%);
+  }
+  [tooltip-position='top']::after{
+    left:50%;
+  }
+  [tooltip-position='buttom']::after{
+    top:100%;
+    margin-top:8px;
+    transform: translateX(-50%) translateY(0%);
+  }
+  [tooltip-position='right']::after{
+    left:100%;
+    top:50%;
+    margin-left:8px;
+    transform: translateX(0%)   translateY(-50%);
+  }
+  
+  [tooltip]:hover::after,[tooltip]:hover::before {
+     opacity:1;
+     transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .input{
+    margin-left:135px
+  }
 
 /* Tooltips end */
 
@@ -66,10 +140,9 @@ p {
   padding: 0;
   width: 100%;
   overflow: hidden;
-  position: fixed;
+  position: sticky;
   align-items: center;
   justify-content: center;
-  /* top: 0; */
 }
 
 .navbar li {
@@ -77,8 +150,16 @@ p {
   width: 100vw;
   text-align: center;
   background-color: #9676bb;
-
+    margin:0;
 }
+
+.navbar-current {
+  background-color: #8a6cac;
+}
+
+.navbar-current:hover {
+    background-color: #795f97;
+  }
 
 .navbar li:hover {
     float: left;
@@ -90,13 +171,9 @@ p {
 .navbar li a {
   display: block;
   font-weight: bold;
-  /* align-content: space-between; */
+  align-content: space-between;
   padding: 20px 20px;
   min-height: 1.5em;
-}
-
-.margin-top-70px {
-  margin-top: 70px;
 }
 
 /* Welcome view start */
@@ -139,45 +216,46 @@ p {
 
 /* Welcome view end */
 
-/* Create view start */
+/* Profile form view start */
 
-.create-profile {
+.profile-info {
     display: flex;
+    margin: 10px;
     flex-direction: column;
-    /* min-height: 100%; */
     align-items: center;
     justify-content: center;
 }
 
-.create-profile h1 {
+.profile-info h1 {
     font-size: 2em;
+    padding: 20px;
     animation: bounce-in 600ms ease-in-out;
 }
 
-.create-profile * {
+.profile-info * {
     font-size: 1em;
 }
 
-.create-profile form {
+.profile-info form {
     display: flex;
     flex-wrap: wrap;
     min-height: 100%;
     flex-direction: column;
 }
 
-.create-profile > form > section * {
+.profile-info > form > section * {
     min-height: 40px;
     min-width: 300px;
     max-width: 400px;
 }
 
-.create-profile > form > section > label,
-.create-profile > form  > label{
+.profile-info > form > section > label,
+.profile-info > form  > label{
     min-height: 1em;
 }
 
-.create-profile > form > section > input,
-.create-profile > form  > input {
+.profile-info > form > section > input,
+.profile-info > form  > input {
     margin: 10px 0px;
     background-color: rgb(150, 118, 187);
     color: #dbdbdb;
@@ -186,7 +264,7 @@ p {
     text-align: center;
 }
 
-.create-profile > form > section > select {
+.profile-info > form > section > select {
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 5px;
@@ -201,11 +279,11 @@ p {
 
 }
 
-.create-profile > form > button {
+.profile-info > form > button {
   margin: 0.5em 0px;
 }
 
-.create-profile > form > button:hover {
+.profile-info > form > button:hover {
     animation: vibrate 200ms linear alternate;
   }
 
@@ -213,7 +291,68 @@ p {
     text-align: center;
 }
 
-/* Create view end */
+/* Profile form view end */
+
+/* Noms view start */
+
+.noms-container {
+    display: flex;
+    /* background-color: red; */
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.greet-user {
+    font-size: 3em;
+    padding: 10px;
+    margin: 0;
+}
+
+.calorie-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calorie-display > h1{
+    font-size: 5em;
+    font-weight: 800;
+}
+
+.calorie-display > h1 span{
+    font-weight: 400;
+}
+
+.calorie-display p{
+    font-size: 1.5em;
+}
+
+.add-calories {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-calories > form input{
+    margin: 10px 0px;
+    background-color: rgb(150, 118, 187);
+    color: #dbdbdb;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 1.5em;
+    text-align: center;
+    min-width: 400px;
+    min-height: 40px;
+}
+
+label[for="calories"] {
+    display: none;
+}
+
+/* Nom view end */
 
 /* Buttons start */
 
@@ -323,6 +462,37 @@ p {
 }
 
 /* Padding end */
+
+/* Font sizes start */
+
+.font-size-8 {
+    font-size: 8px;
+}
+
+.font-size-10 {
+    font-size: 10px;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
+/* Font sizes end */
+
+/* Animations start */
+/* Animations end */
 
 /* Animation keyframes */
 

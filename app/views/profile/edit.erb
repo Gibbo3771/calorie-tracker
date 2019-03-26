@@ -1,4 +1,4 @@
-<div class="create-profile">
+<div class="profile-info">
     <h1>Edit profile</h1>
     <form id="create-form" action="/profile/<%= @profile.id %>" method="post">
         <input type="hidden" name="_method" value="PATCH">
@@ -36,7 +36,9 @@
         <button class="button-normal border-radius-12px" form_id="create-form" type="submit" name="button">Update</button>
     </form>
     <form action="/profile/<%= @profile.id %>" method="post">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <button class="button-danger border-radius-12px type="submit">Delete</button>
+        <section tooltip="THIS IS PERMANENT" tooltip-position="top">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <button class="button-danger border-radius-12px type="submit">Delete</button>
+        </section>
     </form>
 <div>
