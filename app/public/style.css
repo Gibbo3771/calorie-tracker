@@ -23,16 +23,36 @@ p {
   margin: 0;
 }
 
-.container {
-  width: 100vw;
-  height: 100vh;
-}
+/* Webkit start */
 
 ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
 ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
 ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
   color: transparent;
 }
+
+/* Webkit end */
+
+/* Tooltips start */
+
+[tooltip]:before {            
+    position: absolute;
+    content: attr(tooltip);
+    opacity: 0;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+[tooltip]:hover:before {        
+    opacity: 1;
+    margin-top: -35px;
+    margin-left: 95px;
+    background-color: #3a7d64;
+    transition: all 200ms ease;
+    box-shadow: 2px 2px 1px 1p rgba(0, 0, 0, 0.5);
+}
+
+/* Tooltips end */
 
 /* Welcome view start */
 
@@ -87,7 +107,7 @@ p {
   padding: 0.75em 0;
   font-weight: 800;
   width: 100%;
-  background-color: rgb(150, 118, 187);
+  background-color: #9676bb;
   font-size: 3em;
 }
 
@@ -105,56 +125,75 @@ p {
 /* Create view start */
 
 .create-profile {
-  height: 100vh;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-profile h1 {
+    font-size: 2em;
 }
 
 .create-profile * {
-  font-size: 1.15em;
+    font-size: 1em;
 }
 
-.create-profile > form {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  /* min-width: 5vw; */
+.create-profile form {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100%;
+    flex-direction: column;
 }
 
-.create-profile > form > input {
-  margin: 10px 0px;
-  background-color: rgb(150, 118, 187);
-  color: #dbdbdb;
-  border-radius: 10px;
-  /* text-align: center; */
-  border: 0px;
-  min-height: 5vh;
-  min-width: 32vw;
+.create-profile > form > section * {
+    min-height: 40px;
+    min-width: 300px;
+    max-width: 400px;
 }
 
-.create-profile > form > select {
-  min-height: 5vh;
-  min-width: 32vw;
-  margin: 10px 0px;
-  color: #dbdbdb;
-  border-radius: 10px;
-  text-align: center;
-  border: 0px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 50%;
-  background-color: rgb(150, 118, 187);
-  outline: none;
+.create-profile > form > section {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-profile > form > section > label,
+.create-profile > form  > label{
+    min-height: 1em;
+}
+
+.create-profile > form > section > input,
+.create-profile > form  > input {
+    margin: 10px 0px;
+    background-color: rgb(150, 118, 187);
+    color: #dbdbdb;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.create-profile > form > section > select {
+    display: flex;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 5px;
+    text-overflow: ellipsis;
+    color: #dbdbdb;
+    border-radius: 10px;
+    border: 0px;
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 50%;
+    background-color: rgb(150, 118, 187);
+    outline: none;
+    margin: 0.5em 0px;
+
 }
 
 .create-profile > form > button {
-  margin: 1em 0px;
-  min-height: 5vh;
-  min-width: 20vw;
+  margin: 0.5em 0px;
+}
+
+::-webkit-datetime-edit { 
+    text-align: center;
 }
 
 /* Create view end */
