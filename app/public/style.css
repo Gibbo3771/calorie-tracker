@@ -354,12 +354,14 @@ input {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  width: 100%;
   /* border: 1px solid red; */
   align-items: center;
   justify-content: center;
 }
 
 .calorie-display > h1 {
+  display: flex;
   font-size: 5.5rem;
   font-weight: 800;
 }

@@ -1,7 +1,7 @@
 <div class="noms-grid">
     <h1 class="greet-user">Hello, <%= @profile.first_name %></h1>
     <div class="calorie-display">
-        <h1><span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span> / <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span></h1>
+        <h1><span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span>  /  <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span></h1>
         <p>Remaining</p>
         <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
     </div>
