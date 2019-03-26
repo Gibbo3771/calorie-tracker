@@ -1,33 +1,20 @@
-
-<div class="noms-container">
-    <h1 class="greet-user">Hello, <%= @profile.first_name %></h1>
-    <div class="calorie-display">
-        <h1><span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span> / <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span></h1>
-        <p>Remaining</p>
-        <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
-    </div>
-    <div class="add-calories">
-        <form id="calories-form" action="/calories" method="post"  tooltip="Add your calories" tooltip-position="right">
-            <label visible="false" for="calories">Enter Calories</label>
-            <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
-            <input id="calories"  name="calories" type="number" >
-        </form>
-        <button class="button-normal border-radius-12px font-size-14 button-vibrate" form="calories-form" type="submit" name="button">Nom</button>
+<div class="noms-grid">
+    <div class="noms-container">
+        <h1 class="greet-user">Hello, <%= @profile.first_name %></h1>
+        <div class="calorie-display">
+            <h1><span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span> / <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span></h1>
+            <p>Remaining</p>
+            <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
+        </div>
+        <div class="add-calories">
+            <form id="calories-form" action="/calories" method="post"  tooltip="Add your calories" tooltip-position="right">
+                <label visible="false" for="calories">Enter Calories</label>
+                <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
+                <input id="calories"  name="calories" type="number" >
+            </form>
+            <button class="button-normal border-radius-12px font-size-14 button-vibrate" form="calories-form" type="submit" name="button">Nom</button>
+        </div>
     </div>
 </div>
 
 
-<div>
-    <table>
-        <tr>
-            <th>Amount</th>
-            <th>Time</th>
-        <tr>
-        <% for calorie_intake in @calorie_intakes do %>
-            <tr>
-                <td><%= calorie_intake.calories %></td>
-                <td><%= calorie_intake.timestamp %></td>
-            <tr>
-        <% end %>
-    </table>
-</div>
