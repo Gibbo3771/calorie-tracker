@@ -11,7 +11,7 @@
             <li><a href="/profile">Profile</a></li>
         </ul>
     <% end %>    
-        <div class="<%= "margin-top-100px" if !request.fullpath.match?(/welcome|create/) %>">
+        <div class="container <%= "margin-top-70px" if !request.fullpath.match?(/welcome|create/) %>">
             <%= yield %>
         <div>
     </body>
