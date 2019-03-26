@@ -23,12 +23,13 @@ class CalorieIntake < Model
 
     # protected
     
-    attr_accessor :profile_id, :calories, :datestamp
+    attr_accessor :profile_id, :calories, :datestamp, :timestamp
     def set_data(options)
         super
         @profile_id = options['profile_id']
         @calories = options['calories']
         @datestamp = options['datestamp']
+        @timestamp = options['timestamp']
     end
 
     public
@@ -37,11 +38,13 @@ class CalorieIntake < Model
         sql = "INSERT INTO calorie_intakes (
             profile_id,
             calories,
-            datestamp
+            datestamp,
+            timestamp
             ) VALUES (
              $1,
              $2,
-             CURRENT_DATE   
+             CURRENT_DATE,
+             localtime(0)   
             ) RETURNING id"
         @id = SqlRunner.run(sql, [@profile_id, @calories]).map {|i| i['id']}
         return

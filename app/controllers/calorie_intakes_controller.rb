@@ -14,6 +14,7 @@ class CalorieIntakesController < ApplicationController
 
     get('/:id') do
         @profile = Profile.find(params['id'])
+        @calorie_intakes = @profile.get_calorie_intakes()
         erb(:"calorie_intakes/view")
     end
 

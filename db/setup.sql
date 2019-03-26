@@ -27,7 +27,8 @@ CREATE TABLE calorie_intakes (
     id SERIAL4 PRIMARY KEY,
     profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
     calories INT,
-    datestamp DATE
+    datestamp DATE,
+    timestamp TIME
 );
 
 INSERT INTO physical_activity_levels (

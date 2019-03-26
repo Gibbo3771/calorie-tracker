@@ -21,9 +21,10 @@ physical_activity_level_id
 INSERT INTO calorie_intakes (
     profile_id,
     calories,
-    datestamp
+    datestamp,
+    timestamp
 ) VALUES
-( 1, 200, CURRENT_DATE),
-( 1, 300, CURRENT_DATE),
-( 1, 500, CURRENT_DATE),
-( 1, 500, CURRENT_DATE);
+( 1, 200, CURRENT_DATE, localtime(0)),
+( 1, 300, CURRENT_DATE, localtime(0)),
+( 1, 500, CURRENT_DATE, localtime(0)),
+( 1, 500, CURRENT_DATE, localtime(0));

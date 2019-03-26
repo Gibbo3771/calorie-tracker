@@ -61,6 +61,14 @@ class Profile < Model
         return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first().to_i
     end
 
+    def get_calorie_intakes()
+        sql = "SELECT * FROM calorie_intakes
+        WHERE calorie_intakes.profile_id = $1
+        AND
+        date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
+        return (SqlRunner.run(sql, [@id]).map { |data| CalorieIntake.new(data)})
+    end
+
     def remaining_calories()
         return ((calculate_bmr() * physical_activity_level().bmr_multiplier) - calories_consumed_today()).to_i
     end

@@ -11,8 +11,6 @@
             <li><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile">Profile</a></li>
         </ul>
     <% end %>    
-        <div class="container">
-            <%= yield %>
-        <div>
+        <%= yield %>
     </body>
 </html>
