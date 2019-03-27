@@ -1,39 +1,38 @@
-<div class="container">
-    <div class="profile-info">
-        <h1>Create Profile</h1>
-        <form id="create-form" action="/profile" method="post">
-            <label for="first-name">First Name</label>
-            <section>
-                <input id="first-name"  name="first_name" type="text"/>
-            </section>
-            <label for="last-name">Last Name</label>
-            <section>
-                <input id="last-name"  name="last_name" type="text"/>
-            </section>
-            <label for="date-of-birth">Date of Birth *</label>
-            <section tooltip="Please enter the correct date of birth, as this is used to calculate your TDDE" tooltip-position="top">
-                <input id="date-of-birth"  name="date_of_birth" type="date"/>
-            </section>
-            <label for="height">Height (cm) *</label>
-            <section tooltip="Your height will be used to calculate your TDEE, be as accurate as possible"  tooltip-position="top">
-                <input id="height"  name="height" type="text"/>
-            </section>
-            <label for="weight">Weight (kg) *</label>
-            <section tooltip="Your weight will be used to calculate your TDEE, be as accurate as possible"  tooltip-position="top">
-                <input id="weight"  name="weight" type="text"/>
-            </section>
-            <label for="physical-activity-level-id">Activity Level *</label>
-            <section tooltip="Describe how active you are"  tooltip-position="top">
-                <select id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
-                    <option selected disabled title="This is required to get an accurate TDEE">Please Select</option>
-                    <% for pal in @physical_activity_levels do %>
-                        <option id="physical-activity-level-id" name="physical_activity_level_id" value="<%= pal.id %>">
-                            <%= pal.physical_activity_level%>
-                        </option>
-                    <% end %>
-                </select>
-            </section>
-            <button class="button-normal border-radius-12px" form_id="create-form" type="submit" name="button">Create</button>
-        </form>
-    </div>
+
+<div class="profile-create">
+    <h1>Create Profile</h1>
+    <form id="create-form" action="/profile" method="post">
+        <label for="first-name">First Name</label>
+        <section>
+            <input id="first-name"  name="first_name" type="text"/>
+        </section>
+        <label for="last-name">Last Name</label>
+        <section>
+            <input id="last-name"  name="last_name" type="text"/>
+        </section>
+        <label for="date-of-birth">Date of Birth *</label>
+        <section tooltip="Please enter the correct date of birth, as this is used to calculate your TDDE" tooltip-position="top">
+            <input id="date-of-birth"  name="date_of_birth" type="date"/>
+        </section>
+        <label for="height">Height (cm) *</label>
+        <section tooltip="Your height will be used to calculate your TDEE, be as accurate as possible"  tooltip-position="top">
+            <input id="height"  name="height" type="text"/>
+        </section>
+        <label for="weight">Weight (kg) *</label>
+        <section tooltip="Your weight will be used to calculate your TDEE, be as accurate as possible"  tooltip-position="top">
+            <input id="weight"  name="weight" type="text"/>
+        </section>
+        <label for="physical-activity-level-id">Activity Level *</label>
+        <section tooltip="Describe how active you are"  tooltip-position="top">
+            <select class="font-size-1" id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
+                <option selected disabled>Please Select</option>
+                <% for pal in @physical_activity_levels do %>
+                    <option id="physical-activity-level-id" name="physical_activity_level_id" value="<%= pal.id %>">
+                        <%= pal.physical_activity_level%>
+                    </option>
+                <% end %>
+            </select>
+        </section>
+        <button class="button-normal border-radius-12px font-size-0 margin-top-8" form_id="create-form" type="submit" name="button">Create</button>
+    </form>
 </div>

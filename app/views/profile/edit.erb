@@ -1,7 +1,7 @@
 
-<div class="profile-info">
+<div class="profile-edit">
     <h1>Edit profile</h1>
-    <form id="create-form" action="/profile/<%= @profile.id %>" method="post">
+    <form id="edit-form" action="/profile/<%= @profile.id %>" method="post">
         <input type="hidden" name="_method" value="PATCH">
         <label for="first-name">First Name</label>
         <section>
@@ -25,8 +25,8 @@
         </section>
         <label for="physical-activity-level-id">Activity Level *</label>
         <section>
-            <select id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
-                <option selected disabled title="This is required to get an accurate TDEE">Please Select</option>
+            <select class="font-size-1" id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
+                <option selected disabled>Please Select</option>
                 <% for pal in @physical_activity_levels do %>
                     <option id="physical-activity-level-id" name="physical_activity_level_id" value="<%= pal.id %>" <%= "selected" if pal.id == @profile.physical_activity_level_id %>>
                         <%= pal.physical_activity_level%>
@@ -34,12 +34,12 @@
                 <% end %>
             </select>
         </section>
-        <button class="button-normal border-radius-12px button-vibrate" form_id="create-form" type="submit" name="button">Update</button>
+        <button class="button-normal border-radius-12px button-vibrate font-size-0 margin-top-6" form="edit-form" type="submit" name="button">Update</button>
     </form>
     <form action="/profile/<%= @profile.id %>" method="post">
         <section tooltip="THIS IS PERMANENT" tooltip-position="top">
             <input id="hidden" type="hidden" name="_method" value="DELETE">
-            <button class="button-danger border-radius-12px button-vibrate" type="submit">Delete</button>
         </section>
+        <button class="button-danger border-radius-12px button-vibrate font-size-0 margin-top-6" type="submit">Delete</button>
     </form>
 </div>

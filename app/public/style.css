@@ -38,27 +38,30 @@ input {
   /* margin: 10px 0px; */
   background-color: #41517c;
   color: #dbdbdb;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 0px;
-  font-size: 2rem;
+  font-size: 1.4rem;
   text-align: center;
-  min-width: 200px;
-  max-width: 500px;
+  min-width: 400px;
+  max-width: 800px;
   min-height: 50px;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
-  text-indent: 5px;
+  /* text-indent: 5px; */
   text-overflow: ellipsis;
   color: #dbdbdb;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 0px;
   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 50%;
   background-color: #41517c;
   outline: none;
-  margin: 0.5em 0px;
+  text-align: center;
+  padding: 8px 0 8px 0;
+  /* min-height: 50px; */
+  /* margin: 0.5em 0px; */
 }
 
 button {
@@ -67,16 +70,32 @@ button {
   min-height: 50px;
 }
 
+form label {
+  font-size: 1.2rem;
+  padding: 10px 0 10px 0;
+}
+
 .container {
   width: 100%;
 }
 
 /* Webkit start */
 
+/* Removes the date type spinner buttos */
 ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
 ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
 ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
   color: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  display: none;
 }
 
 /* Webkit end */
@@ -208,6 +227,7 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.514);
+  font-family: "Baloo Chettan";
 }
 
 .navbar li {
@@ -216,14 +236,18 @@ button {
   text-align: center;
   background-color: #9676bb;
   margin: 0;
+  font-size: 1.8rem;
+  transition: background-color 100ms linear;
 }
 
 .navbar-current {
   background-color: #8a6cac;
+  transition: background-color 100ms linear;
 }
 
 .navbar-current:hover {
   background-color: #795f97;
+  transition: background-color 100ms linear;
 }
 
 .navbar li:hover {
@@ -231,14 +255,14 @@ button {
   width: 100vw;
   text-align: center;
   background-color: #795f97;
+  transition: background-color 100ms linear;
 }
 
 .navbar li a {
   display: block;
-  font-weight: bold;
+  /* font-weight: bold; */
   align-content: space-between;
-  padding: 20px 20px;
-  min-height: 1.5em;
+  padding: 10px 0 10px 0;
 }
 
 /* Welcome view start */
@@ -282,46 +306,66 @@ button {
 
 /* Welcome view end */
 
-/* Profile form view start */
+/* Profile create form start */
 
-.profile-info {
+.profile-create {
   display: flex;
   height: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
-.profile-info h1 {
+.profile-create h1 {
   font-size: 2rem;
   padding: 20px;
   animation: bounce-in 600ms ease-in-out;
 }
 
-.profile-info * {
-  font-size: 1em;
-}
-
-.profile-info form {
+.profile-create form {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
-.profile-info > form > section * {
-  min-height: 40px;
-  min-width: 300px;
-  max-width: 400px;
-}
-
-.profile-info > form > button {
-  margin: 0.5em 0px;
+.profile-create form section input,
+.profile-create form section select {
+  width: 100%;
 }
 
 ::-webkit-datetime-edit {
   text-align: center;
 }
 
-/* Profile form view end */
+/* Profile create form end */
+
+/* Profile edit form start */
+
+.profile-edit {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-edit h1 {
+  font-size: 2rem;
+  padding: 20px;
+  animation: bounce-in 600ms ease-in-out;
+}
+
+.profile-edit form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.profile-edit form section input,
+.profile-edit form section select {
+  width: 100%;
+}
+/* Profile edit form end */
 
 /* Noms view start */
 
@@ -542,6 +586,44 @@ label[for="calories"] {
 }
 
 /* Font sizes end */
+
+/* Margins start */
+
+.margin-top-0 {
+  margin-top: 0;
+}
+.margin-top-1 {
+  margin-top: 2px;
+}
+.margin-top-2 {
+  margin-top: 4px;
+}
+.margin-top-3 {
+  margin-top: 6px;
+}
+.margin-top-4 {
+  margin-top: 8px;
+}
+.margin-top-5 {
+  margin-top: 10px;
+}
+.margin-top-6 {
+  margin-top: 14px;
+}
+.margin-top-7 {
+  margin-top: 18px;
+}
+.margin-top-8 {
+  margin-top: 22px;
+}
+.margin-top-9 {
+  margin-top: 26px;
+}
+.margin-top-10 {
+  margin-top: 30px;
+}
+
+/* Margins end */
 
 /* Animations start */
 
