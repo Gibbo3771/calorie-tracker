@@ -25,7 +25,7 @@
         </section>
         <label for="physical-activity-level-id">Activity Level *</label>
         <section>
-            <select class="font-size-1" id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
+            <select id="physical-activity-level-id"  name="physical_activity_level_id" type="text">
                 <option selected disabled>Please Select</option>
                 <% for pal in @physical_activity_levels do %>
                     <option id="physical-activity-level-id" name="physical_activity_level_id" value="<%= pal.id %>" <%= "selected" if pal.id == @profile.physical_activity_level_id %>>
