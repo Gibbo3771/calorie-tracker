@@ -20,7 +20,7 @@ CREATE TABLE profiles (
     gender VARCHAR(255),
     height VARCHAR(255),
     weight VARCHAR(255),
-    physical_activity_level_id INT REFERENCES physical_activity_levels(id)
+    physical_activity_level_id INT REFERENCES physical_activity_levels(id) ON DELETE CASCADE
 );
 
 CREATE TABLE calorie_intakes (
