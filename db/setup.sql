@@ -14,7 +14,7 @@ CREATE TABLE physical_activity_levels (
 
 CREATE TABLE foods (
     id SERIAL4 PRIMARY KEY,
-    food_name VARCHAR(255) UNIQUE
+    food_name VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE profiles (

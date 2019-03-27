@@ -28,3 +28,18 @@ INSERT INTO calorie_intakes (
 ( 1, 300, CURRENT_DATE, localtime(0)),
 ( 1, 500, CURRENT_DATE, localtime(0)),
 ( 1, 500, CURRENT_DATE, localtime(0));
+
+INSERT INTO foods (
+    food_name
+) VALUES 
+('Fillet steak'),
+('Rump steak'),
+('Chicken breast'),
+('Egg'),
+('Brown bread'),
+('Rice'),
+('Ben and Jerrys Cookie Dough'),
+('Maximuscle millnaire shortcake'),
+('Mars bar'),
+('Yazoo banana'),
+('Goodfellas pizza');

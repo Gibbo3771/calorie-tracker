@@ -13,9 +13,12 @@ class CalorieIntakesController < ApplicationController
     end
 
     post('/') do
+        food = Food.new(params)
+        food = food.save()
+        puts "food id #{food.id}"
+        params['food_id'] = food.id
         puts params
         CalorieIntake.new(params).save()
-        Food.new(params).save()
         redirect("/calories/#{params['profile_id']}")
     end
 
