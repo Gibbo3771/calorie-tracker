@@ -275,7 +275,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .nav-dropdown-menu {
   position: relative;
   display: inline;
-  /* width: 300px; */
 }
 
 .nav-submenu {
@@ -301,7 +300,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .nav-submenu li {
   font-weight: bold;
   display: block;
-  padding: 10px 0 10px 0;
+  /* padding: 10px 0 10px 0; */
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.514);
 }
 
