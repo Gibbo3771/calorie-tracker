@@ -80,6 +80,12 @@ form label {
   padding: 10px 0 10px 0;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
 .container {
   width: 100%;
 }
@@ -239,19 +245,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   float: left;
   width: 100vw;
   text-align: center;
-  background-color: #9676bb;
+  background-color: #442c60;
   margin: 0;
   font-size: 1.8rem;
   transition: background-color 100ms linear;
 }
 
 .navbar-current {
-  background-color: #8a6cac;
+  /* 4c3169 */
+  background-color: #503370;
   transition: background-color 100ms linear;
 }
 
 .navbar-current:hover {
-  background-color: #795f97;
+  background-color: #503370;
   transition: background-color 100ms linear;
 }
 
@@ -259,7 +266,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   float: left;
   width: 100vw;
   text-align: center;
-  background-color: #795f97;
+  background-color: #38244e;
   transition: background-color 100ms linear;
 }
 
@@ -268,6 +275,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   /* font-weight: bold; */
   align-content: space-between;
   padding: 10px 0 10px 0;
+}
+
+.navbar li ul {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  position: absolute;
+}
+
+.navbar li:hover > ul,
+.navbar li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
 }
 
 /* Welcome view start */

@@ -13,7 +13,8 @@
     <% if !request.fullpath.match?(/welcome|create/) %>
         <ul class="navbar">
             <li><a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a></li>
-            <li><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile">Profile</a></li>
+            <li><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile"> Profile</a>
+            </li>
         </ul>
     <% end %>  
         <div class="container">
