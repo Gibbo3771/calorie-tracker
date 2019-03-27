@@ -10,13 +10,23 @@
             <h1>Nom Nom Nom!</h1>
         </div>
     </div>
-    <% if !request.fullpath.match?(/welcome|create/) %>
-        <ul class="navbar">
-            <li><a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a></li>
-            <li><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile"> Profile</a>
-            </li>
-        </ul>
-    <% end %>  
+    <nav class="navigation" role="full-horizontal">
+        <% if !request.fullpath.match?(/welcome|create/) %>
+            <ul class="nav-menu">
+                <li>
+                    <a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a>
+                </li>
+                <li class="nav-dropdown-menu">
+                    <a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile"> Profile</a>
+                    <ul class="nav-submenu">
+                        <li>Sub item 1</li>
+                        <li>Sub item 2</li>
+                        <li>Sub item 3</li>
+                    </ul>
+                </li>
+            </ul>
+        <% end %>  
+    </nav>
         <div class="container">
             <%= yield %>
         </div>

@@ -225,25 +225,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Tooltips end */
 
-.navbar {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow: hidden;
+.navigation {
+  /* overflow: hidden; */
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.514);
   font-family: "Baloo Chettan";
 }
 
-.navbar li {
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
   float: left;
-  width: 100vw;
+  width: 100%;
   text-align: center;
   background-color: #442c60;
   margin: 0;
@@ -252,7 +253,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .navbar-current {
-  /* 4c3169 */
   background-color: #503370;
   transition: background-color 100ms linear;
 }
@@ -262,32 +262,41 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transition: background-color 100ms linear;
 }
 
-.navbar li:hover {
-  float: left;
-  width: 100vw;
-  text-align: center;
+.nav-menu li:hover {
   background-color: #38244e;
   transition: background-color 100ms linear;
 }
 
-.navbar li a {
+.nav-menu li a {
   display: block;
-  /* font-weight: bold; */
-  align-content: space-between;
   padding: 10px 0 10px 0;
 }
 
-.navbar li ul {
-  visibility: hidden;
-  display: none;
-  opacity: 0;
-  position: absolute;
+.nav-dropdown-menu {
+  position: relative;
+  display: inline;
+  /* width: 300px; */
 }
 
-.navbar li:hover > ul,
-.navbar li ul:hover {
+.nav-dropdown-menu:hover .nav-submenu {
+  display: flex;
+  flex-direction: column;
   visibility: visible;
   opacity: 1;
+  transition: all 100ms ease-in;
+}
+
+.nav-submenu {
+  opacity: 0;
+  visibility: hidden;
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  transition: all 50ms ease-out;
+}
+
+.nav-submenu li {
+  font-weight: bold;
   display: block;
 }
 
