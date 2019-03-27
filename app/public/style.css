@@ -393,7 +393,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     ". greeting ."
     ". calorie-info ."
     " . input . ";
-  grid-gap: 50px 50px;
+  /* grid-gap: 50px 50px; */
   justify-items: center;
   justify-content: center;
 }
@@ -402,8 +402,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   grid-area: greeting;
   grid-auto-columns: 0 / span 2;
   font-size: 3rem;
-  padding: 10px;
-  margin: 0;
   align-self: center;
   justify-self: center;
   width: 100%;
@@ -429,7 +427,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .calorie-display > h1 {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   font-size: 5.5rem;
   font-weight: 800;
 }
@@ -444,18 +442,56 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .add-calories {
   grid-area: input;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  display: grid;
+  grid-template:
+    [row1-start] "name i1" auto[row1-end]
+    [row2-start] "_weight i2" auto[row1-end]
+    [row3-start] "calories i3" auto[row3-end]
+    [row4-start] "nom nom" auto[row4-end]
+    / auto auto auto auto;
+  /* grid-template-areas:
+    "name i1 i1"
+    "_weight i2 i2"
+    "calories i3 i3"
+    "nom nom nom"; */
+  grid-gap: 5px;
+}
+
+.food-name {
+  grid-area: name;
+  justify-self: center;
+}
+
+.food-name + input {
+  grid-area: i1;
+}
+
+.food-weight {
+  grid-area: _weight;
+  justify-self: center;
+}
+
+.food-weight + input {
+  grid-area: i2;
+}
+
+.food-calories {
+  grid-area: calories;
+  justify-self: center;
+}
+
+.food-calories + input {
+  grid-area: i3;
 }
 
 .nom-button {
+  grid-area: nom;
   margin-top: 10px;
 }
 
-label[for="calories"] {
+/* label[for="calories"] {
   display: none;
-}
+} */
 
 /* Nom view end */
 
