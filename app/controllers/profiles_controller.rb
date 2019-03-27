@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
         profile = Profile.new(params)
         profile.save()
         activate_profile(profile)
-        redirect("/calories/#{profile.id}")
+        redirect("/track/#{profile.id}")
     end
     
     delete('/:id') do
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     patch('/:id') do
         puts params
         Profile.find(params[:id]).update(params)
-        redirect("/calories/#{params[:id]}")
+        redirect("/track/#{params[:id]}")
     end
 
 end

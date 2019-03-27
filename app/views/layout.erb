@@ -2,7 +2,7 @@
 <html>
     <head>
         <link href="/style.css" rel="stylesheet" type="text/css" />
-        <title>Calories Tracker</title>
+        <title>Nom Nom Nom</title>
     </head>
     <body>
     <div class="banner">
@@ -14,7 +14,7 @@
         <ul class="nav-menu">
             <% if !request.fullpath.match?(/welcome|create/) %>
                 <li>
-                    <a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a>
+                    <a class="<%= "navbar-current" if request.fullpath.match?(/track/)%>" href="/track">Track</a>
                 </li>
                 <li class="nav-dropdown-menu">
                     <a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>"> Profile</a>

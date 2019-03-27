@@ -61,12 +61,12 @@ class Profile < Model
         return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first().to_i
     end
 
-    def get_calorie_intakes()
+    def get_food_log_today()
         sql = "SELECT * FROM calorie_intakes
         WHERE calorie_intakes.profile_id = $1
         AND
         date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
-        return (SqlRunner.run(sql, [@id]).map { |data| CalorieIntake.new(data)})
+        return (SqlRunner.run(sql, [@id]).map { |data| FoodLog.new(data)})
     end
 
     def remaining_calories()

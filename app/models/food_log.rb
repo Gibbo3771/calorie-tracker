@@ -1,14 +1,14 @@
 require_relative './model'
 
-class CalorieIntake < Model
+class FoodLog < Model
     class << self
 
         def table
-            "calorie_intakes"
+            "food_logs"
         end
 
         def create_instance(options)
-            return CalorieIntake.new(options)
+            return FoodLog.new(options)
         end
 
         def delete_most_recent()
@@ -36,7 +36,7 @@ class CalorieIntake < Model
     public
 
     def save()
-        sql = "INSERT INTO calorie_intakes (
+        sql = "INSERT INTO #{self.class.table} (
             profile_id,
             food_id,
             calories,

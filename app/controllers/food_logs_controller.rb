@@ -1,15 +1,15 @@
 require_relative './application_controller'
-require_relative '../models/calorie_intake'
+require_relative '../models/food_log'
 require_relative '../models/food'
 require_relative '../models/profile'
 
-class CalorieIntakesController < ApplicationController
+class FoodLogsController < ApplicationController
 
     get('/:id') do
         @profile = Profile.find(params['id'])
         @foods = Food.all()
-        @calorie_intakes = @profile.get_calorie_intakes()
-        erb(:"calorie_intakes/view")
+        @food_log = @profile.get_food_log_today()
+        erb(:"track/view")
     end
 
     post('/') do
@@ -18,13 +18,13 @@ class CalorieIntakesController < ApplicationController
         puts "food id #{food.id}"
         params['food_id'] = food.id
         puts params
-        CalorieIntake.new(params).save()
-        redirect("/calories/#{params['profile_id']}")
+        FoodLog.new(params).save()
+        redirect("/track/#{params['profile_id']}")
     end
 
     delete('/') do
-        CalorieIntake.delete_most_recent()
-        redirect("/calories/#{params['id']}")
+        FoodLog.delete_most_recent()
+        redirect("/track/#{params['id']}")
     end
 
 end

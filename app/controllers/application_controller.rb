@@ -17,11 +17,11 @@ class ApplicationController < Sinatra::Base
     get('/') do
         activate_profile(Profile.find_first())
         redirect('/welcome') unless profile_active?()
-        redirect("calories/#{session[:profile_id]}")
+        redirect("track/#{session[:profile_id]}")
     end
 
     get('/welcome') do
-        redirect("/calories/#{session[:profile_id]}") if profile_active?()
+        redirect("/track/#{session[:profile_id]}") if profile_active?()
         erb(:welcome)
     end
 
