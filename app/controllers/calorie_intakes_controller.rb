@@ -4,14 +4,6 @@ require_relative '../models/profile'
 
 class CalorieIntakesController < ApplicationController
 
-    get('/welcome') do
-        if Profile.exists?()
-            profile = Profile.find_first()
-            redirect("calories/#{profile.id}")
-        end
-        erb(:welcome)
-    end
-
     get('/:id') do
         @profile = Profile.find(params['id'])
         @calorie_intakes = @profile.get_calorie_intakes()

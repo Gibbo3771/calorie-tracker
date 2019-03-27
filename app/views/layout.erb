@@ -11,21 +11,19 @@
         </div>
     </div>
     <nav class="navigation" role="full-horizontal">
-        <% if !request.fullpath.match?(/welcome|create/) %>
-            <ul class="nav-menu">
+        <ul class="nav-menu">
+            <% if !request.fullpath.match?(/welcome|create/) %>
                 <li>
                     <a class="<%= "navbar-current" if request.fullpath.match?(/calories/)%>" href="/calories">Track</a>
                 </li>
                 <li class="nav-dropdown-menu">
-                    <a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile"> Profile</a>
+                    <a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>"> Profile</a>
                     <ul class="nav-submenu">
-                        <li>Sub item 1</li>
-                        <li>Sub item 2</li>
-                        <li>Sub item 3</li>
+                        <li><p><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile/<%= session[:profile_id] %>/edit">Edit</a></p></li>
                     </ul>
                 </li>
+            <% end %>  
             </ul>
-        <% end %>  
     </nav>
         <div class="container">
             <%= yield %>

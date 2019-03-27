@@ -1,6 +1,10 @@
 require 'sinatra'
+require_relative '../../helpers/helpers'
+require_relative '../models/profile'
 
 class ApplicationController < Sinatra::Base
+    include Sinatra::Nom::SessionHelper
+    register Sinatra::Nom::SessionHelper
 
     settings = JSON.parse(File.open("./config/settings.json","r").read())
     set :views, File.expand_path('../../views', __FILE__)
@@ -8,16 +12,17 @@ class ApplicationController < Sinatra::Base
     set :environment, settings['dev'] ? :development : :production
     set :method_override, true
 
-    set :profile_id, "-1"
-
-    @@profile_id = 5
-
-    def logged_in?()
-        return !@@profile_id.nil?
+    enable :sessions
+    
+    get('/') do
+        activate_profile(Profile.find_first())
+        redirect('/welcome') unless profile_active?()
+        redirect("calories/#{session[:profile_id]}")
     end
 
-    get('/') do
-        redirect('/calories/welcome')
+    get('/welcome') do
+        redirect("/calories/#{session[:profile_id]}") if profile_active?()
+        erb(:welcome)
     end
 
 end
