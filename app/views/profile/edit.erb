@@ -37,9 +37,9 @@
         <button class="button-normal border-radius-12px button-vibrate font-size-1 margin-top-6" form="edit-form" type="submit" name="button">Update</button>
     </form>
     <form action="/profile/<%= @profile.id %>" method="post">
-        <section tooltip="THIS IS PERMANENT" tooltip-position="top">
+        <section>
             <input id="hidden" type="hidden" name="_method" value="DELETE">
         </section>
-        <button class="button-danger border-radius-12px button-vibrate font-size-1 margin-top-6" type="submit">Delete</button>
+        <button class="button-danger border-radius-12px button-vibrate font-size-1 margin-top-6" type="submit" tooltip="THIS IS PERMANENT" tooltip-position="top">Delete</button>
     </form>
 </div>

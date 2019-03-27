@@ -88,10 +88,6 @@ ul {
   padding-left: 0;
 }
 
-.container {
-  width: 100%;
-}
-
 /* Webkit start */
 
 /* Removes the date type spinner buttos */
@@ -311,41 +307,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Welcome view start */
 
-.welcome {
+.welcome-grid {
   display: flex;
+  height: 75%;
   flex-direction: column;
-  text-align: center;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
-  min-width: 100%;
+  /* border: 1px solid red; */
 }
 
-.welcome > p {
-  font-size: 1.5em;
-  /* padding-bottom: 1em; */
-  padding-top: 2em;
-}
-
-.welcome > section {
-  width: 100%;
-  background-color: #9676bb;
-  padding: 30px;
-}
-
-.welcome > section > h1 {
-  font-weight: 800;
-  font-size: 3em;
-  animation: shake 1000ms ease-in-out alternate infinite;
-}
-
-.welcome > p + p:hover {
-  animation: wobble 500ms ease-in-out;
-}
-
-.welcome > p > a {
-  border-radius: 2px;
-  animation: ripple 1s infinite;
+.welcome-grid p {
+  font-size: 1.5rem;
 }
 
 /* Welcome view end */
@@ -354,7 +326,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .profile-create {
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -387,7 +358,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .profile-edit {
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -410,6 +380,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .profile-edit form section select {
   width: 100%;
 }
+
 /* Profile edit form end */
 
 /* Noms view start */
