@@ -13,7 +13,7 @@ html {
   overflow-x: hidden;
   background-color: #252525;
   color: #dbdbdb;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 a {
@@ -42,9 +42,9 @@ input {
   border: 0px;
   font-size: 1.4rem;
   text-align: center;
-  min-width: 400px;
+  min-width: 500px;
   max-width: 800px;
-  min-height: 50px;
+  min-height: 70px;
 }
 
 select {
@@ -59,15 +59,15 @@ select {
   background-color: #41517c;
   outline: none;
   text-align: center;
-  padding: 8px 0 8px 0;
+  padding: 18px 0 18px 0;
   /* min-height: 50px; */
   /* margin: 0.5em 0px; */
 }
 
 button {
-  min-width: 200px;
-  max-width: 500px;
-  min-height: 50px;
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 70px;
 }
 
 form label {
@@ -111,7 +111,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .banner div > h1 {
   font-family: "Baloo Chettan";
-  font-size: 5em;
+  font-size: 6rem;
   color: #ffde99;
   transform: rotateZ(3deg);
 }
@@ -348,7 +348,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   justify-content: center;
   margin: 15px 0 15px 0;
-
 }
 
 .profile-edit h1 {
