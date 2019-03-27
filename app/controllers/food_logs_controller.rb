@@ -13,12 +13,10 @@ class FoodLogsController < ApplicationController
     end
 
     post('/') do
-        food = Food.new(params)
-        food = food.save()
-        puts "food id #{food.id}"
-        params['food_id'] = food.id
-        puts params
-        FoodLog.new(params).save()
+        food_log = FoodLog.new(params)
+        food = Food.new(params).save()
+        food_log.set_food(food)
+        food_log.save()
         redirect("/track/#{params['profile_id']}")
     end
 

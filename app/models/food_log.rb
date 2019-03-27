@@ -53,4 +53,8 @@ class FoodLog < Model
         return
     end
 
+    def set_food(food)
+        @food_id = food.id
+    end
+
 end

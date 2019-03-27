@@ -28,7 +28,7 @@ CREATE TABLE profiles (
     physical_activity_level_id INT REFERENCES physical_activity_levels(id) ON DELETE CASCADE
 );
 
-CREATE TABLE calorie_intakes (
+CREATE TABLE food_logs (
     id SERIAL4 PRIMARY KEY,
     profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
     food_id INT REFERENCES foods(id) ON DELETE CASCADE,

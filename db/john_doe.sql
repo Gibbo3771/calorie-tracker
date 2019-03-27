@@ -18,16 +18,6 @@ physical_activity_level_id
     4
 );
 
-INSERT INTO calorie_intakes (
-    profile_id,
-    calories,
-    datestamp,
-    timestamp
-) VALUES
-( 1, 200, CURRENT_DATE, localtime(0)),
-( 1, 300, CURRENT_DATE, localtime(0)),
-( 1, 500, CURRENT_DATE, localtime(0)),
-( 1, 500, CURRENT_DATE, localtime(0));
 
 INSERT INTO foods (
     food_name
@@ -43,3 +33,15 @@ INSERT INTO foods (
 ('Mars bar'),
 ('Yazoo banana'),
 ('Goodfellas pizza');
+
+INSERT INTO food_logs (
+    profile_id,
+    food_id,
+    calories,
+    datestamp,
+    timestamp
+) VALUES
+( 1, 1, 200, CURRENT_DATE, localtime(0)),
+( 1, 5,300, CURRENT_DATE, localtime(0)),
+( 1, 7,500, CURRENT_DATE, localtime(0)),
+( 1, 1, 500, CURRENT_DATE, localtime(0));

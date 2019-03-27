@@ -53,19 +53,19 @@ class Profile < Model
     end
 
     def calories_consumed_today()
-        sql = "SELECT SUM(calorie_intakes.calories) AS total FROM calorie_intakes
+        sql = "SELECT SUM(food_logs.calories) AS total FROM food_logs
         WHERE 
-        calorie_intakes.profile_id = $1 
+        food_logs.profile_id = $1 
         AND 
-        date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
+        date_part('day', food_logs.datestamp) - date_part('day', CURRENT_DATE) = 0"
         return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first().to_i
     end
 
     def get_food_log_today()
-        sql = "SELECT * FROM calorie_intakes
-        WHERE calorie_intakes.profile_id = $1
+        sql = "SELECT * FROM food_logs
+        WHERE food_logs.profile_id = $1
         AND
-        date_part('day', calorie_intakes.datestamp) - date_part('day', CURRENT_DATE) = 0"
+        date_part('day', food_logs.datestamp) - date_part('day', CURRENT_DATE) = 0"
         return (SqlRunner.run(sql, [@id]).map { |data| FoodLog.new(data)})
     end
 

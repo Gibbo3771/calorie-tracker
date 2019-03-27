@@ -97,14 +97,22 @@ ul {
   color: transparent;
 }
 
-input[type="date"]::-webkit-inner-spin-button {
+/* Removes spinner on date picker */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
   display: none;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+/* Removes spinner on number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  display: none;
+  margin: 0;
+}
+/* Same as above but for firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* Webkit end */
