@@ -12,6 +12,11 @@ CREATE TABLE physical_activity_levels (
     bmr_multiplier FLOAT
 );
 
+CREATE TABLE foods (
+    id SERIAL4 PRIMARY KEY,
+    food_name VARCHAR(255) UNIQUE
+);
+
 CREATE TABLE profiles (
     id SERIAL4 PRIMARY KEY,
     first_name VARCHAR(255),
@@ -26,10 +31,13 @@ CREATE TABLE profiles (
 CREATE TABLE calorie_intakes (
     id SERIAL4 PRIMARY KEY,
     profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
+    food_id INT REFERENCES foods(id) ON DELETE CASCADE,
+    weight FLOAT,
     calories INT,
     datestamp DATE,
     timestamp TIME
 );
+
 
 INSERT INTO physical_activity_levels (
     physical_activity_level,
