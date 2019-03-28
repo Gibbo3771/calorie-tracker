@@ -237,9 +237,9 @@ input[type="number"] {
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.514);
   /* font-family: "Baloo Chettan"; */
   font-family: "Signika Negative", sans-serif;
+  background-color: red;
 }
 
 .nav-menu {
@@ -261,14 +261,15 @@ input[type="number"] {
 }
 
 .navigation-current {
-  background-color: #cfd5d5;
-  color: #0c494c;
+  background-color: #0c494c;
+  color: #cfd5d5;
   transition: color 100ms linear;
+  box-shadow: inset 0px -4px 0px 0px #a3b353;
 }
 
 .navigation-current:hover {
-  background-color: #c1caca;
-  color: #0c494c;
+  background-color: #0c494c;
+  color: #cfd5d5;
   transition: color 100ms linear;
 }
 
