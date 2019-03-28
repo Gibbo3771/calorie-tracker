@@ -17,7 +17,7 @@ class FoodLogsController < ApplicationController
         erb(:"track/view")
     end
 
-    post('/') do
+    post('/add-food') do
         food_log = FoodLog.new(params)
         food = Food.new(params).save()
         food_log.set_food(food)

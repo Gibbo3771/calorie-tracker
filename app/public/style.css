@@ -39,6 +39,7 @@ input,
 select,
 button {
   font-size: 1.6rem;
+  min-height: 60px;
 }
 
 input {
@@ -50,7 +51,6 @@ input {
   text-align: center;
   min-width: 400px;
   max-width: 800px;
-  min-height: 60px;
 }
 
 input:focus {
@@ -407,11 +407,12 @@ input[type="number"] {
   /* margin: 20px; */
   display: grid;
   grid-template:
-    [row1-start] " . greeting . " 200px[row1-end]
-    [row2-start] " . calorie-info . " auto[row1-end]
-    [row3-start] " . input . " auto[row3-end]
+    [row1-start] "greeting greeting greeting" 8rem[row1-end]
+    [row2-start] " calorie-info calorie-info calorie-info" auto[row2-end]
+    [row3-start] "add-calories . quick-add " auto[row3-end]
+    [row4-start] ". nom . " auto[row4-end]
     / auto auto auto;
-  grid-gap: 50px 50px;
+  grid-gap: 20px 20px;
   justify-items: center;
   justify-content: center;
   margin: 15px 0 15px 0;
@@ -457,17 +458,23 @@ input[type="number"] {
 }
 
 .add-calories {
-  grid-area: input;
+  grid-area: add-calories;
   display: grid;
   grid-template:
-    [row1-start] "name i1" auto[row1-end]
-    [row2-start] "_weight i2" auto[row1-end]
-    [row3-start] "calories i3" auto[row3-end]
-    [row4-start] "nom nom" auto[row4-end]
+    [row1-start] "label label" auto[row1-end]
+    [row2-start] "name i1" auto[row2-end]
+    [row3-start] "_weight i2" auto[row3-end]
+    [row4-start] "calories i3" auto[row4-end]
+    [row5-start] "nom nom" auto[row5-end]
     / auto auto;
   grid-gap: 10px 20px;
   /* justify-items: center; */
   justify-content: center;
+}
+
+.add-label {
+  grid-area: label;
+  justify-self: center;
 }
 
 .food-name {
@@ -501,9 +508,23 @@ input[type="number"] {
   grid-area: nom;
 }
 
-/* label[for="calories"] {
-  display: none;
-} */
+.quick-add {
+  grid-area: quick-add;
+  display: grid;
+  grid-template: 
+  [row1-start] "label label" auto[row1-end]
+  [row2-start] "name i1" 60px[row2-end]
+  [row3-start] "nom nom" 60px[row3-end]
+  [row4-start] " . . " auto[row4-end]
+  [row5-start] " . . " auto[row5-end]
+  / auto auto;
+  grid-gap: 10px 20px;
+  /* justify-items: center; */
+  align-self: start;
+  justify-content: center;
+}
+
+.add-label +
 
 /* Nom view end */
 
