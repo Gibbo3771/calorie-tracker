@@ -405,6 +405,7 @@ input[type="number"] {
   grid-gap: 50px 50px;
   justify-items: center;
   justify-content: center;
+  margin: 15px 0 15px 0;
 }
 
 .greet-user {
