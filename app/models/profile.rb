@@ -79,6 +79,7 @@ class Profile < Model
     end
 
     def save()
+        puts @date_of_birth
         sql = "INSERT INTO #{self.class.table} (
             first_name, 
             last_name, 

@@ -14,14 +14,15 @@ class ApplicationController < Sinatra::Base
 
     enable :sessions
     
+    before() do
+        @profile = Profile.find(session[:profile_id])
+    end
+    
     get('/') do
-        activate_profile(Profile.find_first())
-        redirect('/welcome') unless profile_active?()
-        redirect("track/#{session[:profile_id]}")
+        redirect("/welcome")
     end
 
     get('/welcome') do
-        redirect("/track/#{session[:profile_id]}") if profile_active?()
         erb(:welcome)
     end
 

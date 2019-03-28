@@ -5,6 +5,11 @@ require_relative '../models/profile'
 
 class FoodLogsController < ApplicationController
 
+    get("/") do
+        require_active_profile!()
+        redirect("/track/#{session[:profile_id]}")
+    end
+
     get('/:id') do
         @profile = Profile.find(params['id'])
         @foods = Food.all()

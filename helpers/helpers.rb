@@ -2,8 +2,8 @@ module Sinatra
     module Nom
         module SessionHelper
 
-            def require_active_profile()
-                redirect('/') unless profile_active?()
+            def require_active_profile!()
+                redirect('/session/try') unless profile_active?()
             end
 
             def activate_profile(profile)

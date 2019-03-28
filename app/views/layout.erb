@@ -14,12 +14,13 @@
         <ul class="nav-menu">
             <% if !request.fullpath.match?(/welcome|create/) %>
                 <li>
-                    <a class="<%= "navbar-current" if request.fullpath.match?(/track/)%>" href="/track">Track</a>
+                    <a class="<%= "navigation-current" if request.fullpath.match?(/track/)%>" href="/track">Track</a>
                 </li>
                 <li class="nav-dropdown-menu">
-                    <a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>"> Profile</a>
+                    <a class="<%= "navigation-current" if request.fullpath.match?(/profile/)%>">Profile</a>
                     <ul class="nav-submenu">
-                        <li><p><a class="<%= "navbar-current" if request.fullpath.match?(/profile/)%>" href="/profile/<%= session[:profile_id] %>/edit">Edit</a></p></li>
+                        <li><p><a class="<%= "navigation-current" if request.fullpath.match?(/profile/)%>" href="/profile/<%= session[:profile_id] %>/edit">Edit</a></p></li>
+                        <li><p><a class="<%= "navigation-current" if request.fullpath.match?(/setting/)%>" href="#">Settings</a></p></li>
                     </ul>
                 </li>
             <% end %>  

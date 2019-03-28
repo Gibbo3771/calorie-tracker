@@ -260,19 +260,21 @@ input[type="number"] {
   transition: background-color 100ms linear;
 }
 
-.navbar-current {
-  background-color: #0c494c;
-  transition: background-color 100ms linear;
+.navigation-current {
+  background-color: #cfd5d5;
+  color: #0c494c;
+  transition: color 100ms linear;
 }
 
-.navbar-current:hover {
-  background-color: #002d2f;
-  transition: background-color 100ms linear;
+.navigation-current:hover {
+  background-color: #c1caca;
+  color: #0c494c;
+  transition: color 100ms linear;
 }
 
 .nav-menu li:hover {
   background-color: #002d2f;
-  transition: background-color 100ms linear;
+  transition: color 100ms linear;
 }
 
 .nav-menu li a {

@@ -1,7 +1,7 @@
 
 <div class="profile-edit">
     <h1>Edit profile</h1>
-    <form id="edit-form" action="/profile/<%= @profile.id %>" method="post">
+    <form id="edit-form" action="/profile" method="post">
         <input type="hidden" name="_method" value="PATCH">
         <label for="first-name">First Name</label>
         <section>
@@ -36,7 +36,7 @@
         </section>
         <button class="button-normal border-radius-12px button-vibrate font-size-1 margin-top-6" form="edit-form" type="submit" name="button">Update</button>
     </form>
-    <form action="/profile/<%= @profile.id %>" method="post">
+    <form action="/profile" method="post">
         <section>
             <input id="hidden" type="hidden" name="_method" value="DELETE">
         </section>

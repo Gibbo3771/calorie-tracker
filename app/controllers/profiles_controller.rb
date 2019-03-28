@@ -4,8 +4,12 @@ require_relative './application_controller'
 
 class ProfilesController < ApplicationController
 
+    get("/") do
+        require_active_profile!()
+    end
+
     get('/create') do
-        redirect('/') if profile_exists?(Profile.find_first())
+        # redirect('/') if profile_exists?(Profile.find_first())
         @physical_activity_levels = PhysicalActivityLevel.all()
         erb(:"profile/create")
     end
@@ -23,17 +27,17 @@ class ProfilesController < ApplicationController
         redirect("/track/#{profile.id}")
     end
     
-    delete('/:id') do
-        profile = Profile.new(params)
+    delete('/') do
+        profile = Profile.find(session[:profile_id])
         deactivate_profile()
         profile.delete()
         redirect('/')
     end
     
-    patch('/:id') do
+    patch('/') do
         puts params
-        Profile.find(params[:id]).update(params)
-        redirect("/track/#{params[:id]}")
+        Profile.find(session[:profile_id]).update(params)
+        redirect("/track/#{session[:profile_id]}")
     end
 
 end
