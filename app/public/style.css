@@ -247,6 +247,7 @@ input[type="number"] {
   top: -1px;
   /* font-family: "Baloo Chettan"; */
   font-family: "Signika Negative", sans-serif;
+  z-index: 1000;
 }
 
 .nav-menu {
@@ -409,7 +410,7 @@ input[type="number"] {
     [row1-start] "greeting greeting greeting" 8rem[row1-end]
     [row2-start] " calorie-info calorie-info calorie-info" auto[row2-end]
     [row3-start] "add-calories . quick-add " auto[row3-end]
-    [row4-start] ". nom . " auto[row4-end]
+    [row4-start] "entries-today entries-today entries-today" auto[row4-end]
     / auto auto auto;
   grid-gap: 20px 20px;
   justify-items: center;
@@ -529,7 +530,64 @@ input[type="number"] {
   justify-content: center;
 }
 
+.entries-today {
+  grid-area: entries-today;
+  align-self: center;
+  justify-content: center;
+}
+
 /* Nom view end */
+
+/* Entries today table start */
+
+.entries-today table {
+  border-spacing: 0;
+  margin: 0;
+  border: 1px solid #cfd5d5;
+  /* border-collapse: separate;   */
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 1.2em;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #0c494c;
+}
+
+.entries-today table tr th {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 10px;
+  min-width: 200px;
+  /* border: 1px solid #cfd5d5; */
+
+  
+}
+.entries-today table tr td {
+  margin: 0;
+  border-collapse: collapse;
+  padding: 5px 5px 5px 5px;
+  align-items: center;
+  vertical-align: middle;
+
+}
+
+.entries-today table tr {
+  align-items: center;
+  margin: 0;
+  border-collapse: collapse;
+
+}
+
+[row-color="norm"] {
+  background-color: #0e585c
+}
+
+[row-color="alt"] {
+  background-color: #203a3b
+}
+
+/* Entries today table end */
+
 
 /* Buttons start */
 
@@ -584,6 +642,12 @@ input[type="number"] {
   animation-name: vibrate;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;
+}
+
+.button-wee {
+  min-width: 100px;
+  min-height: 30px;
+  font-size: 0.75em;
 }
 
 /* Buttons end */

@@ -1,19 +1,18 @@
 <div class="noms-grid">
-    <h1 class="greet-user">Hello, <%= @profile.first_name %></h1>
+    <h1 class="greet-user">Hello <%= @profile.first_name %></h1>
     <div class="calorie-display">
         <h1>
             <span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span>
             /  
-            <span tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span>
+            <span class="anim-bounce-in anim-duration-800" tooltip="This is the total you can nom today" tooltip-position="right"><%= (@profile.calculate_bmr * @profile.physical_activity_level().bmr_multiplier).to_i %></span>
         </h1>
         <p>Remaining</p>
         <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
     </div>
-    <form class="quick-add" id="quick-add" action="/track/quick-add" method="post"  tooltip="Add your food" tooltip-position="top">
+    <form class="quick-add" id="quick-add" action="/track/quick-add" method="post"  tooltip="Quickly add a known food" tooltip-position="top">
         <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
-        <p class="add-label">Quick add</p>
+        <p class="add-label font-size-1">Quick add</p>
         <select id="pretty-food-name"  name="pretty_food_name" required>
-            <option selected disabled>Please Select</option>
             <% for food_log in @food_logs %>
                 <option>
                     <%= food_log.to_s %>
@@ -24,7 +23,7 @@
     </form>
     <form class="add-calories" id="add-form" action="/track/add-food" method="post"  tooltip="Add your food" tooltip-position="top">
         <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>        
-        <p class="add-label">Add Food</p>
+        <p class="add-label font-size-1">Add Food</p>
         <label class="food-name" for="food-name">Name</label>
         <input id="food-name"  name="food_name" type="text" list="food_logs" autocomplete="off" required/>
         <datalist id="food_logs">
@@ -38,6 +37,37 @@
         <input id="food-calories"  name="calories" type="number" />
         <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="add-form" type="submit">Nom</button>
     </form>
+
+    <div class="entries-today">
+        <table>
+            <tr>
+                <th colspan="5" cellspacing="0">Today</th>
+            </tr>
+            <tr>
+                <th>Food</th>
+                <th>Weight</th>
+                <th>Calories</th>
+                <th>Time</th>
+                <th></th>
+            </tr>
+            <% for food_log in @food_logs_today %>
+                <tr row-color="<%= @row_no % 2 == 0 ? "norm" : "alt" %>">
+                    <td><%= food_log.get_food().food_name %></td>
+                    <td><%= food_log.weight %></td>
+                    <td><%= food_log.calories %></td>
+                    <td><%= food_log.timestamp %></td>
+                    <td>
+                    <form action="/track/<%= food_log.id %>" method="post">
+                        <section>
+                            <input id="hidden" type="hidden" name="_method" value="DELETE">
+                        </section>
+                    <button class="button-danger border-radius-12px button-vibrate button-wee" type="submit" tooltip="THIS IS PERMANENT" tooltip-position="top">Delete</button>
+                    </td>
+                </tr>
+                <% @row_no += 1 %>
+            <% end %>
+        </table>
+    </div>
 </div>
 
 

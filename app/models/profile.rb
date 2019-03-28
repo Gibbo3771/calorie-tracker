@@ -61,11 +61,12 @@ class Profile < Model
         return (SqlRunner.run(sql, [@id]).map {|data| data['total']}).first().to_i
     end
 
-    def get_food_log_today()
+    def get_food_logs_today()
         sql = "SELECT * FROM food_logs
         WHERE food_logs.profile_id = $1
         AND
-        date_part('day', food_logs.datestamp) - date_part('day', CURRENT_DATE) = 0"
+        date_part('day', food_logs.datestamp) - date_part('day', CURRENT_DATE) = 0
+        ORDER BY id DESC"
         return (SqlRunner.run(sql, [@id]).map { |data| FoodLog.new(data)})
     end
 
