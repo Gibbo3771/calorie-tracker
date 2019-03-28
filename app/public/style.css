@@ -53,6 +53,10 @@ input {
   min-height: 60px;
 }
 
+input:focus {
+  box-shadow: inset 0px 0px 0px 3px #a3b353;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -68,6 +72,10 @@ select {
   padding: 18px 0 18px 0;
   /* min-height: 50px; */
   /* margin: 0.5em 0px; */
+}
+
+select:focus {
+  box-shadow: inset 0px 0px 0px 3px #a3b353;
 }
 
 button {
