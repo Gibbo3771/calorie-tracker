@@ -397,26 +397,22 @@ input[type="number"] {
 .noms-grid {
   /* margin: 20px; */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:
-    ". greeting ."
-    ". calorie-info ."
-    " . input . ";
-  /* grid-gap: 50px 50px; */
+  grid-template:
+    [row1-start] " . greeting . " 200px[row1-end]
+    [row2-start] " . calorie-info . " auto[row1-end]
+    [row3-start] " . input . " auto[row3-end]
+    / auto auto auto;
+  grid-gap: 50px 50px;
   justify-items: center;
   justify-content: center;
 }
 
 .greet-user {
   grid-area: greeting;
-  grid-auto-columns: 0 / span 2;
   font-size: 3rem;
   align-self: center;
   justify-self: center;
-  width: 100%;
-  text-align: center;
-  /* border: 1px solid red; */
+  /* width: 100%; */
 }
 
 .greet-user:hover {
@@ -464,7 +460,9 @@ input[type="number"] {
     "_weight i2 i2"
     "calories i3 i3"
     "nom nom nom"; */
-  grid-gap: 5px;
+  grid-gap: 10px 20px;
+
+  justify-content: center;
 }
 
 .food-name {
