@@ -21,7 +21,16 @@ class FoodLog < Model
         def all_distinct_by_pretty_name()
             sql = "SELECT DISTINCT ON (pretty_name) * FROM food_logs"
         return (SqlRunner.run(sql, []).map {|data| Food.new(data)})
+        end
 
+        def group_by_meal_time(logs)
+            l = Array.new(logs)
+            meal_times = MealTime.all()
+            l.sort_by { |mt| meal_times.index mt.id }
+            for x in l
+                puts x.meal_time_id
+            end
+            return l.reverse()
         end
 
         def delete_most_recent()
@@ -36,7 +45,7 @@ class FoodLog < Model
 
     # protected
     
-    attr_accessor :profile_id, :food_id, :calories, :datestamp, :timestamp, :weight
+    attr_accessor :profile_id, :food_id, :calories, :datestamp, :timestamp, :weight, :meal_time_id
     def set_data(options)
         super
         @profile_id = options['profile_id']
@@ -45,6 +54,7 @@ class FoodLog < Model
         @datestamp = options['datestamp']
         @timestamp = options['timestamp']
         @weight = options['weight']
+        @meal_time_id = options['meal_time_id']
     end
 
     public
@@ -79,6 +89,12 @@ class FoodLog < Model
 
     def set_food(food)
         @food_id = food.id
+    end
+
+    def get_meal_time()
+        sql = "SELECT * FROM meal_times
+        WHERE id = $1"
+        return (SqlRunner.run(sql, [@meal_time_id]).map {|data| MealTime.new(data)}).first()
     end
 
     def to_s

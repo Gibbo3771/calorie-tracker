@@ -429,6 +429,8 @@ input[type="number"] {
 }
 
 .calorie-display {
+  /* position: sticky;
+  top: 0; */
   justify-self: center;
   grid-area: calorie-info;
   display: flex;
@@ -457,12 +459,15 @@ input[type="number"] {
 
 .add-calories {
   /* justify-self: center; */
+  /* align-self: flex-end; */
   grid-area: add-calories;
   display: flex;
   flex-direction: column;
   justify-items: center;
   justify-content: center;
   margin: 20px;
+  position: sticky;
+  top: 400;
 }
 
 .add-label {
@@ -559,6 +564,8 @@ input[type="number"] {
   padding: 5px 5px 5px 5px;
   align-items: center;
   vertical-align: middle;
+  word-wrap: break-word;
+  width: 150px;
 }
 
 .entries-today table tr {

@@ -1,6 +1,7 @@
 require_relative './application_controller'
 require_relative '../models/food_log'
 require_relative '../models/food'
+require_relative '../models/meal_time'
 require_relative '../models/profile'
 
 class FoodLogsController < ApplicationController
@@ -16,7 +17,9 @@ class FoodLogsController < ApplicationController
         @foods = Food.all()
         @food_logs = @profile.get_food_log_all().reverse()
         @food_logs_today = @profile.get_food_logs_today()
+        @meal_times = MealTime.all()
         @row_no = 1
+        @grouped_by = FoodLog.group_by_meal_time(@food_logs_today)
         erb(:"track/view")
     end
 

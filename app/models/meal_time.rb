@@ -13,6 +13,7 @@ class MealTime < Model
 
     end
 
+    attr_accessor :meal_name
 
     protected
 

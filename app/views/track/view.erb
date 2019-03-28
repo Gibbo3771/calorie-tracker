@@ -21,7 +21,9 @@
         </datalist>
         <label class="meal-time" for="meal-time">Meal</label>
         <select class="font-size-0" id="meal-time"  name="meal_time" type="text">
-            <option>TEST</option>
+            <% for meal_time in @meal_times %>
+                <option><%= meal_time.meal_name %></option>
+            <% end %>
         </select>
         <label class="food-weight" for="food-weight">Weight (g)</label>
         <input class="font-size-0" id="food-weight"  name="weight" type="number" />
