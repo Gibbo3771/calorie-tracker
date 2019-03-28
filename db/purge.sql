@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS settings;
 DROP TABLE IF EXISTS foods;
+DROP TABLE IF EXISTS meal_times;
 DROP TABLE IF EXISTS profiles CASCADE;
 DROP TABLE IF EXISTS physical_activity_levels;
 DROP TABLE IF EXISTS food_logs CASCADE;

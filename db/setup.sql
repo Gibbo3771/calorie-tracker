@@ -28,6 +28,11 @@ CREATE TABLE profiles (
     physical_activity_level_id INT REFERENCES physical_activity_levels(id) ON DELETE CASCADE
 );
 
+CREATE TABLE meal_times (
+    id SERIAL4 PRIMARY KEY,
+    meal_name VARCHAR(255)
+);
+
 CREATE TABLE food_logs (
     id SERIAL4 PRIMARY KEY,
     profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
@@ -50,3 +55,11 @@ INSERT INTO physical_activity_levels (
 ( 'Moderately Active', 'Active job or running one hour daily', 1.85 ),
 ( 'Vigorously Active', 'Demanding physical job or swimming two hours daily', 2.15),
 ( 'Extremely Active', 'Professional Athlete', 2.40 );
+
+INSERT INTO meal_times (
+    meal_name
+) VALUES
+('Breakfast'),
+('Lunch'),
+('Dinner'),
+('Snack')
