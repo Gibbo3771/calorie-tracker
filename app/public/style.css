@@ -407,12 +407,14 @@ input[type="number"] {
 
 .noms-grid {
   /* margin: 20px; */
+  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
   justify-content: center;
   align-content: center;
   margin: 50px 0 10px 0;
+  flex: 1;
 }
 
 .greet-user {
@@ -435,7 +437,8 @@ input[type="number"] {
   /* width: 100%; */
   align-items: center;
   justify-content: center;
-  /* padding: 30px; */
+  /* margin: 20px; */
+  /* flex: 1; */
 }
 
 .calorie-display > h1 {
@@ -459,13 +462,13 @@ input[type="number"] {
   flex-direction: column;
   justify-items: center;
   justify-content: center;
-  padding: 30px;
-
+  margin: 20px;
 }
 
 .add-label {
   grid-area: label;
   justify-self: center;
+  /* padding: 30px; */
 }
 
 .food-name {
@@ -494,8 +497,7 @@ input[type="number"] {
 .food-calories + input {
   grid-area: i3;
   margin: 0px 0px 10px 0px;
-  font-size: 1.2em
-
+  font-size: 1.2em;
 }
 
 .nom-button {
@@ -510,7 +512,6 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   padding: 30px;
-  
 }
 
 .add-label + select {
@@ -522,8 +523,10 @@ input[type="number"] {
 
 .entries-today {
   grid-area: entries-today;
-  align-self: center;
+  /* align-self: flex-start; */
   justify-content: center;
+  display: flex;
+  margin: 20px;
 }
 
 /* Nom view end */
@@ -531,7 +534,6 @@ input[type="number"] {
 /* Entries today table start */
 
 .entries-today table {
-  display: flex;
   border-spacing: 0;
   margin: 0;
   border: 1px solid #cfd5d5;
@@ -550,8 +552,6 @@ input[type="number"] {
   padding: 10px;
   min-width: 100px;
   /* border: 1px solid #cfd5d5; */
-
-  
 }
 .entries-today table tr td {
   margin: 0;
@@ -559,26 +559,23 @@ input[type="number"] {
   padding: 5px 5px 5px 5px;
   align-items: center;
   vertical-align: middle;
-
 }
 
 .entries-today table tr {
   align-items: center;
   margin: 0;
   border-collapse: collapse;
-
 }
 
 [row-color="norm"] {
-  background-color: #0e585c
+  background-color: #0e585c;
 }
 
 [row-color="alt"] {
-  background-color: #203a3b
+  background-color: #203a3b;
 }
 
 /* Entries today table end */
-
 
 /* Buttons start */
 
@@ -1084,11 +1081,23 @@ input[type="number"] {
 
 /* Media queries start */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 860px) {
   .calorie-display {
-    order: -1;
-  }  
+    /* order: -1; */
+    flex-basis: 90%;
+  }
 }
 
+@media screen and (max-width: 4096px) {
+  .calorie-display {
+    flex-basis: 100%;
+  }
+}
+
+/* @media screen and (max-width: 1280px) {
+  .calorie-display {
+    flex-basis: 90%;
+  }
+} */
 
 /* Media queries end */
