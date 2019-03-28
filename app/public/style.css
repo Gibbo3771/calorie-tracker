@@ -513,7 +513,7 @@ input[type="number"] {
   display: grid;
   grid-template: 
   [row1-start] "label label" auto[row1-end]
-  [row2-start] "name i1" 60px[row2-end]
+  [row2-start] "i1 i1" 60px[row2-end]
   [row3-start] "nom nom" 60px[row3-end]
   [row4-start] " . . " auto[row4-end]
   [row5-start] " . . " auto[row5-end]
@@ -524,7 +524,9 @@ input[type="number"] {
   justify-content: center;
 }
 
-.add-label +
+.add-label + input {
+  grid-area: i1;
+}
 
 /* Nom view end */
 

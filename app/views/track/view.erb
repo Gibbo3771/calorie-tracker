@@ -10,7 +10,6 @@
         <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
     </div>
     <form class="quick-add" id="quick-add-form" action="/track/quick-add" method="post"  tooltip="Add your food" tooltip-position="top">
-        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
         <p class="add-label">Quick add</p>
         <input id="food-name"  name="food_name" type="text" list="foods" autocomplete="off" required/>
         <datalist id="foods">
@@ -21,7 +20,6 @@
         <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="quick-add" type="submit" name="button">Quick Nom</button>
     </form>
     <form class="add-calories" id="calories-form" action="/track/add-food" method="post"  tooltip="Add your food" tooltip-position="top">
-        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
         <p class="add-label">Add Food</p>
         <label class="food-name" for="food-name">Name</label>
         <input id="food-name"  name="food_name" type="text" list="foods" autocomplete="off" required/>
