@@ -27,6 +27,7 @@ class FoodLogsController < ApplicationController
     end
 
     post('/quick-add') do
+        redirect("/track/#{session[:profile_id]}") unless params[:Please_select]
         food_log = FoodLog.find_by_pretty_name(params[:pretty_food_name])
         food_log.save()
         redirect("/track/#{params[session[:profile_id]]}")
