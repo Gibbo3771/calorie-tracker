@@ -27,9 +27,6 @@ class FoodLog < Model
             l = Array.new(logs)
             meal_times = MealTime.all()
             l.sort_by { |mt| meal_times.index mt.id }
-            for x in l
-                puts x.meal_time_id
-            end
             return l.reverse()
         end
 
@@ -63,11 +60,12 @@ class FoodLog < Model
         sql = "INSERT INTO #{self.class.table} (
             profile_id,
             food_id,
+            meal_time_id,
             calories,
             datestamp,
             timestamp,
             weight,
-            pretty_name
+            pretty_name,
             ) VALUES (
              $1,
              $2,
@@ -77,7 +75,7 @@ class FoodLog < Model
              $4,
              $5  
             ) RETURNING id"
-        @id = SqlRunner.run(sql, [@profile_id, @food_id, @calories, @weight, self.to_s()]).map {|i| i['id']}
+        @id = SqlRunner.run(sql, [@profile_id, @food_id, @meal_time_id, @calories, @weight, self.to_s()]).map {|i| i['id']}
         return
     end
 
@@ -89,6 +87,10 @@ class FoodLog < Model
 
     def set_food(food)
         @food_id = food.id
+    end
+
+    def set_meal_time(meal_time)
+        @meal_time_id = meal_time.id
     end
 
     def get_meal_time()
