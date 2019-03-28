@@ -454,14 +454,9 @@ input[type="number"] {
     [row2-start] "_weight i2" auto[row1-end]
     [row3-start] "calories i3" auto[row3-end]
     [row4-start] "nom nom" auto[row4-end]
-    / auto auto auto auto;
-  /* grid-template-areas:
-    "name i1 i1"
-    "_weight i2 i2"
-    "calories i3 i3"
-    "nom nom nom"; */
+    / auto auto;
   grid-gap: 10px 20px;
-
+  /* justify-items: center; */
   justify-content: center;
 }
 
@@ -494,7 +489,6 @@ input[type="number"] {
 
 .nom-button {
   grid-area: nom;
-  margin-top: 10px;
 }
 
 /* label[for="calories"] {
