@@ -1,16 +1,4 @@
 <div class="noms-grid">
-<form class="quick-add" id="quick-add" action="/track/quick-add" method="post" >
-        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
-        <p class="add-label font-size-1">Quick add</p>
-        <select class="font-size-0" id="pretty-food-name"  name="pretty_food_name" required>
-            <% for food_log in @food_logs %>
-                <option>
-                    <%= food_log.to_s %>
-                </option>
-            <% end %>
-        </select>
-        <button class="button-normal nom-button border-radius-12px font-size-1 button-vibrate" form="quick-add" type="submit">Quick Nom</button>
-    </form>
     <div class="calorie-display">
         <h1>
             <span class="anim-bounce-in anim-duration-800" tooltip="You have nom'd this much today" tooltip-position="left"><%= @profile.calories_consumed_today() %></span>
@@ -31,6 +19,10 @@
                 <option><%= food.food_name %></option>
             <% end %>
         </datalist>
+        <label class="meal-time" for="meal-time">Meal</label>
+        <select class="font-size-0" id="meal-time"  name="meal_time" type="text">
+            <option>TEST</option>
+        </select>
         <label class="food-weight" for="food-weight">Weight (g)</label>
         <input class="font-size-0" id="food-weight"  name="weight" type="number" />
         <label class="food-calories" for="food-calories">Calories</label>
