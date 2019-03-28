@@ -35,7 +35,7 @@
     <div class="entries-today">
         <table>
             <tr>
-                <th colspan="5" cellspacing="0">Today</th>
+                <th class="entries-today-header font-size-4"colspan="5" cellspacing="0">Today</th>
             </tr>
             <tr>
                 <th>Food</th>
@@ -44,21 +44,91 @@
                 <th>Time</th>
                 <th></th>
             </tr>
-            <% for food_log in @food_logs_today %>
-                <tr row-color="<%= @row_no % 2 == 0 ? "norm" : "alt" %>">
-                    <td><%= food_log.get_food().food_name %></td>
-                    <td><%= food_log.weight %></td>
-                    <td><%= food_log.calories %></td>
-                    <td><%= food_log.timestamp %></td>
-                    <td>
-                    <form action="/track/<%= food_log.id %>" method="post">
-                        <section>
-                            <input id="hidden" type="hidden" name="_method" value="DELETE">
-                        </section>
-                    <button class="button-danger border-radius-12px button-vibrate button-wee" type="submit" tooltip="THIS IS PERMANENT" tooltip-position="top">Delete</button>
-                    </td>
-                </tr>
-                <% @row_no += 1 %>
+            <tr>
+                <th  cellspacing="0">Breakfast</th>
+            </tr>
+            <% for food_log in @grouped_by %>
+                <% if food_log.meal_time_id == "1" %>
+                    <tr row-color="alt">
+                        <td><%= food_log.get_food().food_name %></td>
+                        <td><%= food_log.weight %></td>
+                        <td><%= food_log.calories %></td>
+                        <td><%= food_log.timestamp %></td>
+                        <td>
+                        <form action="/track/<%= food_log.id %>" method="post">
+                            <section>
+                                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                            </section>
+                                                <button class="fas fa-times button-cross"  type="submit"></button>
+                        </td>
+                    </tr>
+                    <% @row_no += 1 %>
+                <% end %>
+            <% end %>
+            <tr>
+                <th  cellspacing="0">Lunch</th>
+            </tr>
+            <% for food_log in @grouped_by %>
+                <% if food_log.meal_time_id == "2" %>
+                    <tr row-color="alt">
+                        <td><%= food_log.get_food().food_name %></td>
+                        <td><%= food_log.weight %></td>
+                        <td><%= food_log.calories %></td>
+                        <td><%= food_log.timestamp %></td>
+                        <td>
+                        <form action="/track/<%= food_log.id %>" method="post">
+                            <section>
+                                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                            </section>
+                                                <button class="fas fa-times button-cross"  type="submit"></button>
+                        </td>
+                    </tr>
+                    <% @row_no += 1 %>
+                <% end %>
+            <% end %>
+            <tr>
+                <th  cellspacing="0">Dinner</th>
+            </tr>
+            <% for food_log in @grouped_by %>
+                <% if food_log.meal_time_id == "3" %>
+                    <tr row-color="alt">
+                        <td><%= food_log.get_food().food_name %></td>
+                        <td><%= food_log.weight %></td>
+                        <td><%= food_log.calories %></td>
+                        <td><%= food_log.timestamp %></td>
+                        <td>
+                        <form action="/track/<%= food_log.id %>" method="post">
+                            <section>
+                                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                            </section>
+                                               <button class="fas fa-times button-cross"  type="submit"></button>
+                        </td>
+                    </tr>
+                    <% @row_no += 1 %>
+                <% end %>
+            <% end %>
+            <tr>
+                <th  cellspacing="0">Snacks</th>
+            </tr>
+            <% for food_log in @grouped_by %>
+                <% if food_log.meal_time_id == "4" %>
+                    <tr row-color="alt">
+                        <td><%= food_log.get_food().food_name %></td>
+                        <td><%= food_log.weight %></td>
+                        <td><%= food_log.calories %></td>
+                        <td><%= food_log.timestamp %></td>
+                        <td>
+                        <form action="/track/<%= food_log.id %>" method="post">
+                            <section>
+                                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                            </section>
+                            <%# <i class="fas fa-times"></i> %>
+                        <%#                         <button class="fas fa-times button-cross"  type="submit"></button> %>
+                        <button class="fas fa-times button-cross "  type="submit"></button>
+                        </td>
+                    </tr>
+                    <% @row_no += 1 %>
+                <% end %>
             <% end %>
         </table>
     </div>

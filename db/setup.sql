@@ -37,6 +37,7 @@ CREATE TABLE food_logs (
     id SERIAL4 PRIMARY KEY,
     profile_id INT REFERENCES profiles(id) ON DELETE CASCADE,
     food_id INT REFERENCES foods(id) ON DELETE CASCADE,
+    meal_time_id INT REFERENCES meal_times(id) ON DELETE CASCADE,
     weight FLOAT,
     calories INT,
     datestamp DATE,

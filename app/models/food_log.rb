@@ -65,15 +65,16 @@ class FoodLog < Model
             datestamp,
             timestamp,
             weight,
-            pretty_name,
+            pretty_name
             ) VALUES (
              $1,
              $2,
              $3,
+             $4,
              CURRENT_DATE,
              localtime(0),
-             $4,
-             $5  
+             $5,
+             $6  
             ) RETURNING id"
         @id = SqlRunner.run(sql, [@profile_id, @food_id, @meal_time_id, @calories, @weight, self.to_s()]).map {|i| i['id']}
         return

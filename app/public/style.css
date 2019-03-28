@@ -127,6 +127,16 @@ input[type="number"] {
 
 /* Webkit end */
 
+/* .container {
+  position: relative;
+  background-color: #346d70;
+  top: 0;
+  height: 100%;
+  width: 80%;
+  left: 10%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.9);
+} */
+
 /* Banner start */
 
 .banner {
@@ -413,7 +423,7 @@ input[type="number"] {
   flex-grow: 1;
   justify-content: center;
   align-content: center;
-  margin: 50px 0 10px 0;
+  /* margin: 50px 0 10px 0; */
   flex: 1;
 }
 
@@ -441,12 +451,14 @@ input[type="number"] {
   justify-content: center;
   /* margin: 20px; */
   /* flex: 1; */
+  padding-top: 50px;
 }
 
 .calorie-display > h1 {
   display: flex;
   font-size: 5rem;
   font-weight: 800;
+  padding: 15px;
 }
 
 .calorie-display > h1 span {
@@ -566,12 +578,16 @@ input[type="number"] {
   vertical-align: middle;
   word-wrap: break-word;
   width: 150px;
+  font-size: 1rem;
 }
 
 .entries-today table tr {
   align-items: center;
   margin: 0;
   border-collapse: collapse;
+}
+
+.ntries-today-header {
 }
 
 [row-color="norm"] {
@@ -643,6 +659,23 @@ input[type="number"] {
   min-width: 100px;
   min-height: 30px;
   font-size: 0.75em;
+}
+
+.button-cross {
+  background: rgba(150, 118, 187, 0);
+  border: 0px;
+  color: white;
+  font-size: 18px;
+  min-width: 5px;
+  min-height: 5px;
+  cursor: pointer;
+  /* font-size: 0.75em; */
+}
+
+.button-cross:hover {
+  background: rgba(150, 118, 187, 0);
+  color: red;
+  transition: all 100ms linear;
 }
 
 /* Buttons end */
