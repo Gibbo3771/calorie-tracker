@@ -18,6 +18,12 @@ class FoodLog < Model
             end
         end
 
+        def all_distinct_by_pretty_name()
+            sql = "SELECT DISTINCT ON (pretty_name) * FROM food_logs"
+        return (SqlRunner.run(sql, []).map {|data| Food.new(data)})
+
+        end
+
         def delete_most_recent()
             sql = "SELECT * FROM #{table}
             ORDER BY id DESC
@@ -50,16 +56,18 @@ class FoodLog < Model
             calories,
             datestamp,
             timestamp,
-            weight
+            weight,
+            pretty_name
             ) VALUES (
              $1,
              $2,
              $3,
              CURRENT_DATE,
              localtime(0),
-             $4  
+             $4,
+             $5  
             ) RETURNING id"
-        @id = SqlRunner.run(sql, [@profile_id, @food_id, @calories, @weight]).map {|i| i['id']}
+        @id = SqlRunner.run(sql, [@profile_id, @food_id, @calories, @weight, self.to_s()]).map {|i| i['id']}
         return
     end
 

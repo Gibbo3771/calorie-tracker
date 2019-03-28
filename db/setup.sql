@@ -35,7 +35,8 @@ CREATE TABLE food_logs (
     weight FLOAT,
     calories INT,
     datestamp DATE,
-    timestamp TIME
+    timestamp TIME,
+    pretty_name VARCHAR(1000)
 );
 
 

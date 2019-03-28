@@ -12,14 +12,14 @@
     <form class="quick-add" id="quick-add" action="/track/quick-add" method="post"  tooltip="Add your food" tooltip-position="top">
         <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
         <p class="add-label">Quick add</p>
-        <input id="pretty-food-name"  name="pretty_food_name" type="text" list="foods" autocomplete="off" required/>
-        <datalist id="foods">
+        <select id="pretty-food-name"  name="pretty_food_name">
+            <option selected disabled>Please Select</option>
             <% for food_log in @food_logs %>
                 <option>
                     <%= food_log.to_s %>
                 </option>
             <% end %>
-        </datalist>
+        </select>
         <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="quick-add" type="submit">Quick Nom</button>
     </form>
     <form class="add-calories" id="add-form" action="/track/add-food" method="post"  tooltip="Add your food" tooltip-position="top">

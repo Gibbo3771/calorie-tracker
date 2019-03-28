@@ -34,15 +34,15 @@ INSERT INTO foods (
 ('Yazoo banana'),
 ('Goodfellas pizza');
 
-INSERT INTO food_logs (
-    profile_id,
-    food_id,
-    weight,
-    calories,
-    datestamp,
-    timestamp
-) VALUES
-( 1, 1, 50, 200, CURRENT_DATE, localtime(0)),
-( 1, 5, 80, 300, CURRENT_DATE, localtime(0)),
-( 1, 7, 100, 500, CURRENT_DATE, localtime(0)),
-( 1, 1, 200, 500, CURRENT_DATE, localtime(0));
+-- INSERT INTO food_logs (
+--     profile_id,
+--     food_id,
+--     weight,
+--     calories,
+--     datestamp,
+--     timestamp
+-- ) VALUES
+-- ( 1, 1, 50, 200, CURRENT_DATE, localtime(0)),
+-- ( 1, 5, 80, 300, CURRENT_DATE, localtime(0)),
+-- ( 1, 7, 100, 500, CURRENT_DATE, localtime(0)),
+-- ( 1, 1, 200, 500, CURRENT_DATE, localtime(0));

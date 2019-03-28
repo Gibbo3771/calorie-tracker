@@ -524,8 +524,10 @@ input[type="number"] {
   justify-content: center;
 }
 
-.add-label + input {
+.add-label + select {
   grid-area: i1;
+  align-self: center;
+  justify-content: center;
 }
 
 /* Nom view end */
