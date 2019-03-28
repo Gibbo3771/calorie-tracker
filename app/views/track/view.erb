@@ -9,21 +9,25 @@
         <p>Remaining</p>
         <p class="anim-bounce-in anim-duration-800" tooltip="You can nom this much" tooltip-position="left"><%= @profile.remaining_calories() %></p>
     </div>
-    <form class="quick-add" id="quick-add-form" action="/track/quick-add" method="post"  tooltip="Add your food" tooltip-position="top">
+    <form class="quick-add" id="quick-add" action="/track/quick-add" method="post"  tooltip="Add your food" tooltip-position="top">
+        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>
         <p class="add-label">Quick add</p>
-        <input id="food-name"  name="food_name" type="text" list="foods" autocomplete="off" required/>
+        <input id="pretty-food-name"  name="pretty_food_name" type="text" list="foods" autocomplete="off" required/>
         <datalist id="foods">
-            <% for food in @foods %>
-                <option><%= food.food_name %></option>
+            <% for food_log in @food_logs %>
+                <option>
+                    <%= food_log.to_s %>
+                </option>
             <% end %>
         </datalist>
-        <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="quick-add" type="submit" name="button">Quick Nom</button>
+        <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="quick-add" type="submit">Quick Nom</button>
     </form>
-    <form class="add-calories" id="calories-form" action="/track/add-food" method="post"  tooltip="Add your food" tooltip-position="top">
+    <form class="add-calories" id="add-form" action="/track/add-food" method="post"  tooltip="Add your food" tooltip-position="top">
+        <input id="profile-id"  name="profile_id" type="hidden" value="<%= @profile.id %>"/>        
         <p class="add-label">Add Food</p>
         <label class="food-name" for="food-name">Name</label>
-        <input id="food-name"  name="food_name" type="text" list="foods" autocomplete="off" required/>
-        <datalist id="foods">
+        <input id="food-name"  name="food_name" type="text" list="food_logs" autocomplete="off" required/>
+        <datalist id="food_logs">
             <% for food in @foods %>
                 <option><%= food.food_name %></option>
             <% end %>
@@ -32,7 +36,7 @@
         <input id="food-weight"  name="weight" type="number" />
         <label class="food-calories" for="food-calories">Calories</label>
         <input id="food-calories"  name="calories" type="number" />
-        <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="calories-form" type="submit" name="button">Nom</button>
+        <button class="button-normal nom-button border-radius-12px font-size-2 button-vibrate" form="add-form" type="submit">Nom</button>
     </form>
 </div>
 

@@ -69,6 +69,12 @@ class Profile < Model
         return (SqlRunner.run(sql, [@id]).map { |data| FoodLog.new(data)})
     end
 
+    def get_food_log_all()
+        sql = "SELECT * FROM food_logs
+        WHERE food_logs.profile_id = $1"
+        return (SqlRunner.run(sql, [@id]).map { |data| FoodLog.new(data)})
+    end
+
     def remaining_calories()
         return ((calculate_bmr() * physical_activity_level().bmr_multiplier) - calories_consumed_today()).to_i
     end

@@ -11,9 +11,10 @@ class FoodLogsController < ApplicationController
     end
 
     get('/:id') do
+        require_active_profile!()
         @profile = Profile.find(params['id'])
         @foods = Food.all()
-        @food_log = @profile.get_food_log_today()
+        @food_logs = @profile.get_food_log_all()
         erb(:"track/view")
     end
 
@@ -22,7 +23,13 @@ class FoodLogsController < ApplicationController
         food = Food.new(params).save()
         food_log.set_food(food)
         food_log.save()
-        redirect("/track/#{params['profile_id']}")
+        redirect("/track/#{params[session[:profile_id]]}")
+    end
+
+    post('/quick-add') do
+        food_log = FoodLog.find_by_pretty_name(params[:pretty_food_name])
+        food_log.save()
+        redirect("/track/#{params[session[:profile_id]]}")
     end
 
     delete('/') do
