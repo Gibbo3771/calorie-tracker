@@ -26,9 +26,9 @@
             <% end %>
         </select>
         <label class="food-weight" for="food-weight">Weight (g)</label>
-        <input class="font-size-0" id="food-weight"  name="weight" type="number" />
+        <input class="font-size-0" id="food-weight"  name="weight" type="number" required/>
         <label class="food-calories" for="food-calories">Calories</label>
-        <input class="font-size-0" id="food-calories"  name="calories" type="number" />
+        <input class="font-size-0" id="food-calories"  name="calories" type="number" required/>
         <button class="button-normal nom-button border-radius-12px font-size-1 button-vibrate" form="add-form" type="submit">Nom</button>
     </form>
 
@@ -38,6 +38,11 @@
                 <th class="entries-today-header font-size-4"colspan="5" cellspacing="0">Today</th>
             </tr>
             <tr>
+            <% if @grouped_by.length == 0 %>
+                    <tr colspan="5"row-color="alt">
+                        <td class="no-entries" colspan="5">No entries for today!</td>
+                    </tr>
+            <% else %>
                 <th>Food</th>
                 <th>Weight</th>
                 <th>Calories</th>
@@ -80,7 +85,7 @@
                             <section>
                                 <input id="hidden" type="hidden" name="_method" value="DELETE">
                             </section>
-                                                <button class="fas fa-times button-cross"  type="submit"></button>
+                        <button class="fas fa-times button-cross"  type="submit"></button>
                         </td>
                     </tr>
                     <% @row_no += 1 %>
@@ -101,7 +106,7 @@
                             <section>
                                 <input id="hidden" type="hidden" name="_method" value="DELETE">
                             </section>
-                                               <button class="fas fa-times button-cross"  type="submit"></button>
+                         <button class="fas fa-times button-cross"  type="submit"></button>
                         </td>
                     </tr>
                     <% @row_no += 1 %>
@@ -129,6 +134,7 @@
                     </tr>
                     <% @row_no += 1 %>
                 <% end %>
+            <% end %>
             <% end %>
         </table>
     </div>

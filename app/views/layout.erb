@@ -21,14 +21,14 @@
                     <a class="<%= "navigation-current" if request.fullpath.match?(/profile/)%>">Profile</a>
                     <ul class="nav-submenu">
                         <li><p><a class="<%= "navigation-current" if request.fullpath.match?(/profile/)%>" href="/profile/<%= session[:profile_id] %>/edit">Edit</a></p></li>
-                        <li><p><a class="<%= "navigation-current" if request.fullpath.match?(/setting/)%>" href="#">Settings</a></p></li>
+                        <li><p><a class="<%= "navigation-current" if request.fullpath.match?(/setting/)%>" href="#">Soon! <label class="text-strike">Settings</label></a></p></li>
                     </ul>
                 </li>
             <% end %>  
             </ul>
     </nav>
-    <%# <div class="container"> %>
+    <div class="container">
         <%= yield %>
-    <%# </div> %>
+    </div>
     </body>
 </html>
