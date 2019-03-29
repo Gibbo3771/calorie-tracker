@@ -43,7 +43,7 @@ class Profile < Model
     public
 
     def calculate_bmr()
-        return ((10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * calculate_age().to_i) + (@gender == "male" ? 5 : -161)).to_i
+        return ((10 * @weight.to_f) + (6.25 * @height.to_f) - (5 * calculate_age().to_i) + (@gender == "Male" ? 5 : -161)).to_i
     end
 
     def physical_activity_level()
