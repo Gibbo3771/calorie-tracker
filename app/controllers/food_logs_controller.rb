@@ -1,3 +1,5 @@
+
+require 'time'
 require_relative './application_controller'
 require_relative '../models/food_log'
 require_relative '../models/food'
@@ -20,9 +22,7 @@ class FoodLogsController < ApplicationController
         @meal_times = MealTime.all()
         @row_no = 1
         @grouped_by = FoodLog.group_by_meal_time(@food_logs_today)
-        for x in @grouped_by
-            puts x.meal_time_id
-        end
+        @current_time = Time.new()
         erb(:"track/view")
     end
 

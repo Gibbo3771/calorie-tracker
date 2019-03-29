@@ -35,7 +35,7 @@
     <div class="entries-today">
         <table>
             <tr>
-                <th class="entries-today-header font-size-4"colspan="5" cellspacing="0">Today</th>
+                <th class="entries-today-header font-size-4"colspan="5" cellspacing="0"><%=  @current_time.strftime("%A %d %B")%></th>
             </tr>
             <tr>
             <% if @grouped_by.length == 0 %>
